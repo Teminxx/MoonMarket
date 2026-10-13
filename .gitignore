@@ -1,0 +1,11 @@
+# Copias de seguridad locales (contienen datos de admin: NO publicar)
+temi-shop-backup-*.json
+
+# Carpeta de trabajo antigua (version duplicada de index.html)
+publicar/
+
+# Archivos del sistema / OneDrive
+Thumbs.db
+desktop.ini
+*.tmp
+.~*

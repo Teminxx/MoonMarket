@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fichas Técnicas de Ventas</title>
+<style>
+  :root {
+    --azul: #2563eb;
+    --azul-oscuro: #1d4ed8;
+    --verde: #16a34a;
+    --rojo: #dc2626;
+    --fondo: #f1f5f9;
+    --tarjeta: #ffffff;
+    --texto: #0f172a;
+    --gris: #64748b;
+    --borde: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+    color: #fff;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  header h1 { font-size: 22px; font-weight: 700; }
+  header h1 span { opacity: .85; font-weight: 400; font-size: 14px; display: block; }
+  .btn {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    transition: transform .05s, filter .15s;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn:hover { filter: brightness(1.08); }
+  .btn-azul { background: var(--azul); }
+  .btn-verde { background: var(--verde); }
+  .btn-rojo { background: var(--rojo); }
+  .btn-gris { background: #475569; }
+  .btn-grande { font-size: 17px; padding: 14px 26px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+  .vacio {
+    text-align: center;
+    padding: 70px 20px;
+    color: var(--gris);
+  }
+  .vacio .icono { font-size: 60px; margin-bottom: 14px; }
+  .vacio p { font-size: 17px; margin-bottom: 22px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .ficha {
+    background: var(--tarjeta);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .ficha-head {
+    padding: 18px 20px;
+    background: var(--azul);
+    color: #fff;
+  }
+  .ficha-head .nombre { font-size: 20px; font-weight: 700; }
+  .ficha-head .id {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(255,255,255,.2);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-family: Consolas, monospace;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .5px;
+  }
+  .ficha-head .datos { font-size: 13px; margin-top: 8px; opacity: .92; }
+  .ficha-head .acciones { display: flex; gap: 8px; margin-top: 12px; }
+  .btn-mini {
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+  }
+  .btn-mini:active { transform: scale(.96); }
+  .btn-mini-azul { background: rgba(255,255,255,.25); }
+  .btn-mini-azul:hover { background: rgba(255,255,255,.4); }
+  .btn-mini-rojo { background: rgba(255,255,255,.25); }
+  .btn-mini-rojo:hover { background: #b91c1c; }
+  .ficha-body { padding: 18px 20px; }
+  .seccion-titulo {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--gris);
+    margin-bottom: 10px;
+  }
+  .nueva-venta {
+    background: #f8fafc;
+    border: 1px dashed var(--borde);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .campo { margin-bottom: 10px; }
+  .campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gris);
+    margin-bottom: 4px;
+  }
+  .campo input, .campo select, .campo textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+  }
+  .campo input:focus, .campo select:focus, .campo textarea:focus {
+    outline: 2px solid var(--azul);
+    outline-offset: -1px;
+  }
+  .fila-coste {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .fila-coste .campo { flex: 1; margin-bottom: 0; }
+  .lista-ventas { margin-top: 6px; }
+  .venta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: #fff;
+  }
+  .venta .info { flex: 1; }
+  .venta .desc { font-size: 14px; font-weight: 600; }
+  .venta .detalle { font-size: 12px; color: var(--gris); }
+  .venta .corresponde {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde);
+    white-space: nowrap;
+  }
+  .borrar-venta {
+    background: none;
+    border: none;
+    color: var(--rojo);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  .borrar-venta:hover { background: #fef2f2; }
+  .editar-venta {
+    background: none;
+    border: none;
+    color: var(--azul);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  .editar-venta:hover { background: #eff6ff; }
+  .venta.en-edicion {
+    border: 2px solid var(--azul);
+    background: #eff6ff;
+  }
+  .aviso-editar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #eff6ff;
+    border: 1px solid var(--azul);
+    color: var(--azul-oscuro);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+  .aviso-editar button {
+    background: none;
+    border: none;
+    color: var(--rojo);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .total-ficha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+  }
+  .total-ficha .etiqueta { font-size: 13px; font-weight: 700; color: #15803d; }
+  .total-ficha .monto { font-size: 22px; font-weight: 800; color: #166534; }
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 20px;
+  }
+  .modal-overlay.abierto { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 460px;
+    padding: 26px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+  }
+  .modal h2 { font-size: 20px; margin-bottom: 18px; }
+  .id-generado {
+    margin: 16px 0;
+    text-align: center;
+    padding: 18px;
+    background: #eff6ff;
+    border: 2px dashed var(--azul);
+    border-radius: 12px;
+    display: none;
+  }
+  .id-generado .label { font-size: 13px; color: var(--gris); font-weight: 600; }
+  .id-generado .valor {
+    font-size: 34px;
+    font-weight: 800;
+    font-family: Consolas, monospace;
+    color: var(--azul);
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .modal-acciones { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .modal-acciones .btn { flex: 1; }
+  .resumen {
+    margin-top: 26px;
+    background: var(--tarjeta);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    padding: 22px 26px;
+  }
+  .resumen h2 { font-size: 19px; margin-bottom: 14px; }
+  .resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 14px;
+  }
+  .resumen-linea:last-of-type { border-bottom: none; }
+  .resumen-linea .m { font-weight: 700; }
+  .resumen-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 3px solid var(--azul);
+  }
+  .resumen-total .monto {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--azul);
+  }
+  .oculto { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Fichas Técnicas de Ventas
+    <span>Asigna IDs, registra ventas y calcula el 15% automáticamente</span>
+  </h1>
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <button class="btn btn-verde" onclick="abrirModal()">Nueva ficha</button>
+    <button class="btn btn-azul" onclick="verTotal()">Total 15% (todas)</button>
+  </div>
+</header>
+
+<main>
+  <div id="vacio" class="vacio">
+    <div class="icono">🗂️</div>
+    <p>Aún no hay fichas creadas.<br>Pulsa "Nueva ficha" para empezar.</p>
+    <button class="btn btn-azul btn-grande" onclick="abrirModal()">Crear primera ficha</button>
+  </div>
+
+  <div id="grid" class="grid"></div>
+
+  <div id="resumen" class="resumen oculto">
+    <h2>Total de comisiones (15% de todas las ventas)</h2>
+    <div id="resumen-lineas"></div>
+    <div class="resumen-total">
+      <span style="font-weight:700;">TOTAL</span>
+      <span class="monto" id="resumen-monto">$0.00</span>
+    </div>
+    <div style="margin-top:18px; display:flex; gap:10px;">
+      <button class="btn btn-gris" onclick="cerrarResumen()">Cerrar</button>
+      <button class="btn btn-verde" onclick="limpiarTotales()">Vaciar todas las ventas</button>
+    </div>
+  </div>
+</main>
+
+<div id="modal" class="modal-overlay">
+  <div class="modal">
+    <h2 id="modal-titulo">Nueva ficha técnica</h2>
+    <div class="campo">
+      <label>Nombre de la persona</label>
+      <input type="text" id="m-nombre" placeholder="Ej: Tomás">
+    </div>
+    <div class="campo">
+      <label>Información de contacto</label>
+      <input type="text" id="m-contacto" placeholder="Ej: 555-1234 / correo@email.com">
+    </div>
+    <div class="campo">
+      <label>Fecha</label>
+      <input type="date" id="m-fecha">
+    </div>
+    <div id="id-generado" class="id-generado">
+      <div class="label">Identificador asignado</div>
+      <div class="valor" id="id-valor"></div>
+    </div>
+    <div class="modal-acciones">
+      <button class="btn btn-azul" onclick="generarId()">Generar identificador</button>
+      <button class="btn btn-verde" id="btn-guardar" disabled onclick="guardarFicha()">Guardar ficha</button>
+      <button class="btn btn-rojo" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const CLAVE = "fichasVentas15";
+  let fichas = JSON.parse(localStorage.getItem(CLAVE) || "[]");
+  let idPendiente = null;
+  let editandoId = null;
+  let editandoVenta = null;
+
+  function numAleatorio(longitud) {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let resultado = "";
+    for (let i = 0; i < longitud; i++) {
+      resultado += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return resultado;
+  }
+
+  function generarId() {
+    const nombre = document.getElementById("m-nombre").value.trim();
+    if (!nombre) {
+      alert("Escribe primero el nombre de la persona.");
+      return;
+    }
+    const longitud = 6 + Math.floor(Math.random() * 3);
+    idPendiente = "#" + numAleatorio(longitud);
+    document.getElementById("id-valor").textContent = idPendiente;
+    document.getElementById("id-generado").style.display = "block";
+    document.getElementById("btn-guardar").disabled = false;
+  }
+
+  function abrirModal(fichaId) {
+    editandoId = fichaId || null;
+    const ficha = fichaId ? fichas.find(f => f.id === fichaId) : null;
+    document.getElementById("modal-titulo").textContent = ficha ? "Editar ficha técnica" : "Nueva ficha técnica";
+    document.getElementById("m-nombre").value = ficha ? ficha.nombre : "";
+    document.getElementById("m-contacto").value = ficha ? ficha.contacto : "";
+    document.getElementById("m-fecha").value = ficha ? ficha.fecha : new Date().toISOString().slice(0, 10);
+    document.getElementById("id-generado").style.display = "none";
+    document.getElementById("btn-guardar").disabled = true;
+    idPendiente = null;
+    if (ficha) {
+      idPendiente = ficha.id;
+      document.getElementById("id-valor").textContent = ficha.id;
+      document.getElementById("id-generado").style.display = "block";
+      document.getElementById("btn-guardar").disabled = false;
+    }
+    document.getElementById("modal").classList.add("abierto");
+  }
+
+  function editarFicha(id) {
+    abrirModal(id);
+  }
+
+  function cerrarModal() {
+    document.getElementById("modal").classList.remove("abierto");
+  }
+
+  function guardarFicha() {
+    const nombre = document.getElementById("m-nombre").value.trim();
+    const contacto = document.getElementById("m-contacto").value.trim();
+    const fecha = document.getElementById("m-fecha").value;
+    if (!idPendiente) {
+      alert("Primero genera el identificador.");
+      return;
+    }
+    if (!nombre) {
+      alert("Escribe el nombre de la persona.");
+      return;
+    }
+    if (editandoId) {
+      const ficha = fichas.find(f => f.id === editandoId);
+      if (ficha) {
+        ficha.nombre = nombre;
+        ficha.contacto = contacto;
+        ficha.fecha = fecha;
+        ficha.id = idPendiente;
+      }
+    } else {
+      fichas.push({
+        id: idPendiente,
+        nombre: nombre,
+        contacto: contacto,
+        fecha: fecha,
+        ventas: []
+      });
+    }
+    guardar();
+    cerrarModal();
+    render();
+  }
+
+  function guardar() {
+    localStorage.setItem(CLAVE, JSON.stringify(fichas));
+  }
+
+  function eliminarFicha(id) {
+    if (!confirm("¿Eliminar esta ficha y todas sus ventas?")) return;
+    fichas = fichas.filter(f => f.id !== id);
+    guardar();
+    render();
+  }
+
+  function agregarVenta(id) {
+    const ficha = fichas.find(f => f.id === id);
+    if (!ficha) return;
+    const desc = document.getElementById("venta-desc-" + id).value.trim();
+    const coste = parseFloat(document.getElementById("venta-coste-" + id).value);
+    const fecha = document.getElementById("venta-fecha-" + id).value;
+    if (!desc) {
+      alert("Describe la venta (ej: Vendió x1 Spotify FA 1 mes).");
+      return;
+    }
+    if (isNaN(coste) || coste <= 0) {
+      alert("Introduce un coste de venta válido.");
+      return;
+    }
+    if (editandoVenta && editandoVenta.id === id) {
+      ficha.ventas[editandoVenta.indice] = { desc: desc, coste: coste, fecha: fecha || new Date().toISOString().slice(0, 10) };
+      editandoVenta = null;
+    } else {
+      ficha.ventas.push({ desc: desc, coste: coste, fecha: fecha || new Date().toISOString().slice(0, 10) });
+    }
+    resetFormVenta(id);
+    guardar();
+    render();
+  }
+
+  function editarVenta(id, indice) {
+    const ficha = fichas.find(f => f.id === id);
+    if (!ficha) return;
+    const v = ficha.ventas[indice];
+    if (!v) return;
+    document.getElementById("venta-desc-" + id).value = v.desc;
+    document.getElementById("venta-fecha-" + id).value = v.fecha || "";
+    document.getElementById("venta-coste-" + id).value = v.coste;
+    editandoVenta = { id: id, indice: indice };
+    document.getElementById("aviso-editar-" + id).classList.remove("oculto");
+    document.getElementById("btn-venta-" + id).textContent = "Guardar cambios";
+    const form = document.getElementById("nueva-venta-" + id);
+    if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function cancelarEdicionVenta(id) {
+    editandoVenta = null;
+    resetFormVenta(id);
+  }
+
+  function resetFormVenta(id) {
+    document.getElementById("venta-desc-" + id).value = "";
+    document.getElementById("venta-fecha-" + id).value = new Date().toISOString().slice(0, 10);
+    document.getElementById("venta-coste-" + id).value = "";
+    const aviso = document.getElementById("aviso-editar-" + id);
+    if (aviso) aviso.classList.add("oculto");
+    const btn = document.getElementById("btn-venta-" + id);
+    if (btn) btn.textContent = "Aceptar";
+  }
+
+  function borrarVenta(id, indice) {
+    const ficha = fichas.find(f => f.id === id);
+    if (!ficha) return;
+    ficha.ventas.splice(indice, 1);
+    if (editandoVenta && editandoVenta.id === id) {
+      if (editandoVenta.indice === indice) {
+        editandoVenta = null;
+      } else if (editandoVenta.indice > indice) {
+        editandoVenta.indice--;
+      }
+    }
+    guardar();
+    render();
+  }
+
+  function comision(coste) {
+    return coste * 0.15;
+  }
+
+  function formato(n) {
+    return "$" + n.toFixed(2);
+  }
+
+  function render() {
+    const grid = document.getElementById("grid");
+    const vacio = document.getElementById("vacio");
+    if (fichas.length === 0) {
+      grid.innerHTML = "";
+      vacio.style.display = "block";
+      document.getElementById("resumen").classList.add("oculto");
+      return;
+    }
+    vacio.style.display = "none";
+    let html = "";
+    for (const ficha of fichas) {
+      let totalFicha = 0;
+      let ventasHtml = "";
+      ficha.ventas.forEach((v, i) => {
+        const c = comision(v.coste);
+        totalFicha += c;
+        const editando = editandoVenta && editandoVenta.id === ficha.id && editandoVenta.indice === i;
+        ventasHtml += `
+          <div class="venta${editando ? " en-edicion" : ""}">
+            <div class="info">
+              <div class="desc">${esc(v.desc)}</div>
+              <div class="detalle">📅 ${esc(v.fecha || "Sin fecha")} · Coste: ${formato(v.coste)} · 15%</div>
+            </div>
+            <div class="corresponde">${formato(c)}</div>
+            <button class="editar-venta" onclick="editarVenta('${ficha.id}','${i}')" title="Editar">✏️</button>
+            <button class="borrar-venta" onclick="borrarVenta('${ficha.id}','${i}')" title="Eliminar">✕</button>
+          </div>`;
+      });
+      html += `
+        <div class="ficha">
+          <div class="ficha-head">
+            <div class="nombre">${esc(ficha.nombre)}</div>
+            <div class="id">${ficha.id}</div>
+            <div class="datos">📅 ${esc(ficha.fecha || "Sin fecha")}${ficha.contacto ? " · 📞 " + esc(ficha.contacto) : ""}</div>
+            <div class="acciones">
+              <button class="btn-mini btn-mini-azul" onclick="editarFicha('${ficha.id}')">✏️ Editar</button>
+              <button class="btn-mini btn-mini-rojo" onclick="eliminarFicha('${ficha.id}')">🗑️ Eliminar</button>
+            </div>
+          </div>
+          <div class="ficha-body">
+            <div class="seccion-titulo">Añadir venta</div>
+            <div class="nueva-venta" id="nueva-venta-${ficha.id}">
+              <div class="aviso-editar oculto" id="aviso-editar-${ficha.id}">
+                <span>Editando venta...</span>
+                <button onclick="cancelarEdicionVenta('${ficha.id}')">Cancelar</button>
+              </div>
+              <div class="campo">
+                <label>Escribe</label>
+                <input type="text" id="venta-desc-${ficha.id}" placeholder="Vendió x1 Spotify FA 1 mes">
+              </div>
+              <div class="campo">
+                <label>Fecha de la venta</label>
+                <input type="date" id="venta-fecha-${ficha.id}">
+              </div>
+              <div class="fila-coste">
+                <div class="campo">
+                  <label>Coste de Venta ($)</label>
+                  <input type="number" id="venta-coste-${ficha.id}" step="0.01" min="0" placeholder="3">
+                </div>
+                <button class="btn btn-verde" id="btn-venta-${ficha.id}" onclick="agregarVenta('${ficha.id}')">Aceptar</button>
+              </div>
+            </div>
+            <div class="seccion-titulo">Ventas registradas</div>
+            <div class="lista-ventas">${ventasHtml || "<p style='color:#94a3b8;font-size:13px;'>Sin ventas todavía.</p>"}</div>
+            <div class="total-ficha">
+              <span class="etiqueta">Corresponde (15%)</span>
+              <span class="monto">${formato(totalFicha)}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  function esc(texto) {
+    const div = document.createElement("div");
+    div.textContent = texto;
+    return div.innerHTML;
+  }
+
+  function verTotal() {
+    const resumen = document.getElementById("resumen");
+    if (fichas.length === 0) {
+      alert("No hay fichas creadas.");
+      return;
+    }
+    const lineas = document.getElementById("resumen-lineas");
+    let html = "";
+    let total = 0;
+    for (const ficha of fichas) {
+      let suma = 0;
+      ficha.ventas.forEach(v => suma += comision(v.coste));
+      total += suma;
+      html += `
+        <div class="resumen-linea">
+          <span>${esc(ficha.nombre)} <span style="color:#94a3b8;">(${ficha.id} · ${ficha.ventas.length} venta${ficha.ventas.length === 1 ? "" : "s"})</span></span>
+          <span class="m">${formato(suma)}</span>
+        </div>`;
+    }
+    lineas.innerHTML = html || "<p style='color:#94a3b8;'>No hay ventas registradas.</p>";
+    document.getElementById("resumen-monto").textContent = formato(total);
+    resumen.classList.remove("oculto");
+    resumen.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function cerrarResumen() {
+    document.getElementById("resumen").classList.add("oculto");
+  }
+
+  function limpiarTotales() {
+    if (!confirm("¿Vaciar todas las ventas de todas las fichas? Esta acción no se puede deshacer.")) return;
+    fichas.forEach(f => f.ventas = []);
+    guardar();
+    render();
+    cerrarResumen();
+  }
+
+  document.getElementById("modal").addEventListener("click", function(e) {
+    if (e.target === this) cerrarModal();
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") cerrarModal();
+  });
+
+  render();
+</script>
+</body>
+</html>
