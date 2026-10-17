@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-10-13T20:23:49.223Z",
+  "fecha": "2026-10-17T07:51:18.622Z",
   "config": {
     "adminEmail": "temivirtualshop@gmail.com",
     "whatsapp": "34642465734",
@@ -75,7 +75,7 @@
       "tipos": [
         {
           "id": "id_mv284ccyuxbhg",
-          "nombre": "Gift Link 1m",
+          "nombre": "Discord Nitro 1 Mes",
           "precio": 7,
           "stock": true,
           "caracteristicas": "## Características:\n- Enlace regalo de Nitro Boost\n- Duración de 1 mes. \n\n## Garantía\n- Solo se hará reemplazo del producto en caso de que no funcione al momento del canje. \n- La mayoría de los productos funcionan los 30d completos. \n\n## Condiciones para reclamar: \n- Grabar el proceso completo de canje."
@@ -100,13 +100,6 @@
           "precio": 4,
           "stock": true,
           "caracteristicas": "## Caracteristicas. \n- Nitro Boost promocode de 3 meses. \n- Válido para usuarios que NUNCA hayan tenido nitro. \n- Nitro Boost Incluido."
-        },
-        {
-          "id": "id_mv5l3mko1b8v6",
-          "nombre": "Discord Nitro 1 Mes",
-          "precio": 6,
-          "stock": true,
-          "caracteristicas": "## Caracteristicas. \n- Se aplica directamente en tu cuenta. \n- 25 Dias completos de garantía. \n- Posibilidad de 2 boost de servidor. \n- Todos los beneficios de discord nitro."
         }
       ],
       "id": "id_mv1fwh4c2f47a",
