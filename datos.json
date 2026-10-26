@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-10-17T10:54:38.756Z",
+  "fecha": "2026-10-26T09:06:51.716Z",
   "config": {
     "adminEmail": "temivirtualshop@gmail.com",
     "whatsapp": "34642465734",
@@ -175,16 +175,9 @@
       "caracteristicas": "",
       "tipos": [
         {
-          "id": "id_mv5m02i41r656",
-          "nombre": "Minecraft Full Acess",
-          "precio": 6,
-          "stock": true,
-          "caracteristicas": "## Características.\n- Cuenta nunca usada, completamente nueva. \n- Acceso total, correo, contraseña y todo personalizable.\n- Sin sanciones en servidores."
-        },
-        {
           "id": "id_mv5m02i4rk3wl",
           "nombre": "Minecraft Java y Bedrock [Full Accs]",
-          "precio": 8,
+          "precio": 7,
           "stock": true,
           "caracteristicas": "## Características.\n- Cuenta nunca usada, completamente nueva. \n- Acceso total, correo, contraseña y todo personalizable.\n- Sin sanciones en servidores."
         }
