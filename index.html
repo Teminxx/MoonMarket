@@ -10,43 +10,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* ===== Paleta MOON MARKET · negro + verde neón ===== */
-    --rosa:            #00FF88;   /* color principal (verde neón) */
-    --rosa-neon:       #39FFB0;   /* verde neón brillante */
-    --rosa-suave:      #7CFFC4;   /* verde claro para textos */
-    --rosa-pastel:     #CFFFE7;   /* verde muy suave */
-    --rojo-profundo:   #04140D;   /* verde muy oscuro */
-    --vino:            #05170F;   /* verde bosque oscuro */
-    --baya:            #0A2417;   /* verde / borde */
-    --carmesi:         #00B368;   /* verde degradado */
+    /* ===== Paleta MOON MARKET · Navidad azul clarito ===== */
+    --rosa:            #2385CB;   /* azul navideño principal */
+    --rosa-neon:       #4FB6F2;   /* azul cielo brillante */
+    --rosa-suave:      #1B6FA8;   /* azul medio para textos */
+    --rosa-pastel:     #DCF1FF;   /* azul hielo muy suave */
+    --rojo-profundo:   #0B2A47;   /* azul noche profundo */
+    --vino:            #0F3355;   /* azul marino */
+    --baya:            #C7E6FA;   /* azul hielo / borde */
+    --carmesi:         #1565AE;   /* azul degradado */
 
     /* ===== Paleta secundaria ===== */
-    --morado-noche:    #011d06;   /* casi negro con tinte verde */
-    --azul-profundo:   #000000;   /* negro */
-    --azul-media:      #06291a;   /* verde oscuro intermedio */
-    --azul-violeta:    #004028;   /* verde profundo */
-    --lavanda:         #6FFFC0;   /* acentos verdes */
-    --violeta-glow:    #00E07A;   /* brillos verdes */
+    --morado-noche:    #EEF8FF;   /* blanco azulado */
+    --azul-profundo:   #EAF4FC;   /* fondo general */
+    --azul-media:      #DCEEFF;   /* azul hielo intermedio */
+    --azul-violeta:    #BFE0FF;   /* azul cielo profundo */
+    --lavanda:         #1B6FA8;   /* acentos azules */
+    --violeta-glow:    #66C2F5;   /* brillos azules */
 
     /* ===== Derivadas visuales ===== */
-    --fondo-1:         #000000;
-    --fondo-2:         #02100A;
-    --fondo-3:         #04140D;
-    --brillo-rosa:     rgba(0,255,136,.20);
-    --brillo-violeta:  rgba(0,224,122,.16);
-    --vidrio:          rgba(255,255,255,.045);
-    --vidrio-fuerte:   rgba(255,255,255,.08);
-    --borde:           rgba(0,255,136,.14);
-    --borde-rosa:      rgba(0,255,136,.5);
-    --texto:           #ffffff;
-    --texto-suave:     rgba(224,255,240,.68);
-    --texto-tenue:     rgba(200,240,220,.45);
-    --verde-stock:     #2ee6a8;
-    --verde-oscuro:    rgba(46,230,168,.14);
-    --rojo-stock:      #ff5b7a;
-    --rojo-oscuro:     rgba(255,91,122,.14);
-    --sombra-tarjeta:  0 18px 45px rgba(0,0,0,.65);
-    --glow-rosa:       0 0 26px rgba(0,255,136,.45);
+    --fondo-1:         #F4FBFF;
+    --fondo-2:         #E7F5FF;
+    --fondo-3:         #D6EDFD;
+    --brillo-rosa:     rgba(47,151,221,.18);
+    --brillo-violeta:  rgba(102,194,245,.16);
+    --vidrio:          rgba(255,255,255,.62);
+    --vidrio-fuerte:   rgba(255,255,255,.85);
+    --borde:           rgba(47,151,221,.24);
+    --borde-rosa:      rgba(21,101,174,.5);
+    --texto:           #0B2A47;
+    --texto-suave:     rgba(11,42,71,.72);
+    --texto-tenue:     rgba(11,42,71,.5);
+    --verde-stock:     #12805C;
+    --verde-oscuro:    rgba(18,128,92,.12);
+    --rojo-stock:      #C62828;
+    --rojo-oscuro:     rgba(198,40,40,.1);
+    --sombra-tarjeta:  0 18px 40px rgba(12,54,90,.14);
+    --glow-rosa:       0 0 24px rgba(47,151,221,.35);
     --radio:           20px;
     --radio-suave:     14px;
   }
@@ -61,47 +61,92 @@
     overflow-x: hidden;
   }
 
-  /* ===== Fondo galaxia (nebulosas verdes + estrellas) ===== */
+  /* ===== Fondo invernal (azul clarito + copos de nieve) ===== */
   .fondo-brillo {
     position: fixed;
     inset: 0;
     z-index: -3;
     background:
-      radial-gradient(1100px 720px at 82% -12%, rgba(0,255,136,.20), transparent 58%),
-      radial-gradient(950px 640px at -12% 18%, rgba(0,224,122,.16), transparent 55%),
-      radial-gradient(1100px 800px at 50% 118%, rgba(0,70,40,.55), transparent 62%),
+      radial-gradient(1100px 720px at 82% -12%, rgba(79,182,242,.30), transparent 58%),
+      radial-gradient(950px 640px at -12% 18%, rgba(102,194,245,.24), transparent 55%),
+      radial-gradient(1100px 800px at 50% 118%, rgba(191,224,255,.7), transparent 62%),
       linear-gradient(165deg, var(--fondo-1) 0%, var(--fondo-2) 45%, var(--fondo-3) 100%);
   }
-  /* Campo de estrellas */
+  /* Polvo de nieve / destellos helados */
   .fondo-brillo::before {
     content: "";
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(1.6px 1.6px at 20% 30%, rgba(255,255,255,.95), transparent),
-      radial-gradient(1.4px 1.4px at 72% 14%, rgba(180,255,215,.9), transparent),
-      radial-gradient(1px 1px at 48% 62%, rgba(255,255,255,.75), transparent),
-      radial-gradient(1.6px 1.6px at 9% 78%, rgba(150,255,200,.8), transparent),
-      radial-gradient(1px 1px at 88% 58%, rgba(255,255,255,.65), transparent),
-      radial-gradient(1.2px 1.2px at 34% 9%, rgba(255,255,255,.6), transparent),
-      radial-gradient(1.3px 1.3px at 63% 88%, rgba(180,255,220,.7), transparent),
-      radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,.55), transparent),
-      radial-gradient(1px 1px at 25% 50%, rgba(200,255,225,.5), transparent);
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.95), transparent),
+      radial-gradient(1.8px 1.8px at 72% 14%, rgba(255,255,255,.9), transparent),
+      radial-gradient(1.4px 1.4px at 48% 62%, rgba(255,255,255,.85), transparent),
+      radial-gradient(2px 2px at 9% 78%, rgba(255,255,255,.9), transparent),
+      radial-gradient(1.4px 1.4px at 88% 58%, rgba(120,196,240,.75), transparent),
+      radial-gradient(1.6px 1.6px at 34% 9%, rgba(255,255,255,.8), transparent),
+      radial-gradient(1.8px 1.8px at 63% 88%, rgba(255,255,255,.85), transparent),
+      radial-gradient(1.4px 1.4px at 80% 40%, rgba(120,196,240,.7), transparent),
+      radial-gradient(1.4px 1.4px at 25% 50%, rgba(255,255,255,.75), transparent);
     background-repeat: repeat;
     background-size: 420px 420px, 560px 560px, 360px 360px, 640px 640px, 500px 500px, 300px 300px, 580px 580px, 460px 460px, 520px 520px;
     animation: centellear 6s ease-in-out infinite alternate;
   }
-  /* Nebulosa verde flotante */
+  /* Nube helada flotante */
   .fondo-brillo::after {
     content: "";
     position: absolute;
     border-radius: 50%;
     filter: blur(100px);
-    opacity: .5;
+    opacity: .55;
     width: 520px; height: 520px;
-    background: radial-gradient(circle, var(--rosa), transparent 70%);
+    background: radial-gradient(circle, rgba(79,182,242,.55), transparent 70%);
     top: 12%; left: -160px;
     animation: flotar 16s ease-in-out infinite;
+  }
+  /* ===== Nieve cayendo ===== */
+  .nieve {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .nieve::before,
+  .nieve::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: -60%;
+    height: 220%;
+    background-repeat: repeat;
+    animation: nevar 18s linear infinite;
+  }
+  .nieve::before {
+    opacity: .95;
+    background-image:
+      radial-gradient(2.4px 2.4px at 20% 18%, #ffffff, transparent),
+      radial-gradient(2px 2px at 65% 8%, rgba(255,255,255,.95), transparent),
+      radial-gradient(1.6px 1.6px at 85% 45%, rgba(255,255,255,.9), transparent),
+      radial-gradient(2.2px 2.2px at 38% 52%, rgba(255,255,255,.95), transparent),
+      radial-gradient(1.6px 1.6px at 8% 72%, rgba(255,255,255,.85), transparent),
+      radial-gradient(2px 2px at 55% 88%, rgba(255,255,255,.9), transparent);
+    background-size: 460px 460px;
+    filter: drop-shadow(0 0 3px rgba(47,151,221,.35));
+  }
+  .nieve::after {
+    opacity: .65;
+    animation-duration: 31s;
+    background-image:
+      radial-gradient(3px 3px at 12% 12%, #ffffff, transparent),
+      radial-gradient(2.4px 2.4px at 58% 30%, rgba(255,255,255,.9), transparent),
+      radial-gradient(2px 2px at 88% 62%, rgba(255,255,255,.85), transparent),
+      radial-gradient(2.6px 2.6px at 32% 78%, rgba(255,255,255,.9), transparent);
+    background-size: 720px 720px;
+    filter: drop-shadow(0 0 4px rgba(47,151,221,.3));
+  }
+  @keyframes nevar {
+    from { transform: translateY(-460px); }
+    to   { transform: translateY(0); }
   }
   @keyframes flotar {
     0%, 100% { transform: translate(0,0) scale(1); }
@@ -119,8 +164,26 @@
     z-index: 40;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    background: rgba(2,8,5,.78);
+    background: rgba(255,255,255,.78);
     border-bottom: 1px solid var(--borde);
+    box-shadow: 0 6px 24px rgba(12,54,90,.06);
+  }
+  /* Guirnalda navideña bajo la cabecera */
+  header::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -5px;
+    height: 10px;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle, #ef5350 0 2.4px, transparent 3px),
+      radial-gradient(circle, #ffd54f 0 2.4px, transparent 3px),
+      radial-gradient(circle, #66bb6a 0 2.4px, transparent 3px);
+    background-size: 36px 10px, 36px 10px, 36px 10px;
+    background-position: 0 0, 12px 1px, 24px 0;
+    background-repeat: repeat-x;
+    filter: drop-shadow(0 0 5px rgba(255,213,79,.55));
+    opacity: .9;
   }
   .nav {
     max-width: 1180px;
@@ -149,7 +212,7 @@
     font-weight: 800;
     font-size: 17px;
     letter-spacing: .3px;
-    background: linear-gradient(90deg, #fff 30%, var(--rosa-suave));
+    background: linear-gradient(90deg, var(--texto) 30%, var(--rosa));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -183,7 +246,7 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .enlaces button:hover { color: #fff; }
+  .enlaces button:hover { color: var(--texto); }
   .enlaces button.activo {
     background: linear-gradient(135deg, var(--rosa), var(--carmesi));
     color: #fff;
@@ -218,9 +281,24 @@
 
   /* ===== Hero / Inicio ===== */
   .hero {
+    position: relative;
     text-align: center;
     padding: 70px 10px 40px;
   }
+  /* Copos decorativos del hero */
+  .hero::before,
+  .hero::after {
+    content: "❄";
+    position: absolute;
+    font-size: clamp(22px, 3vw, 36px);
+    color: #8FD3F4;
+    opacity: .8;
+    pointer-events: none;
+    animation: centellear 5s ease-in-out infinite alternate;
+    text-shadow: 0 0 14px rgba(79,182,242,.7);
+  }
+  .hero::before { top: 30px; left: 7%; }
+  .hero::after  { top: 104px; right: 8%; animation-delay: 1.4s; }
   .hero .logo-gigante {
     width: 118px; height: 118px;
     border-radius: 30px;
@@ -234,11 +312,11 @@
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -1.5px;
-    background: linear-gradient(115deg, #ffffff 10%, var(--rosa) 50%, var(--lavanda) 90%);
+    background: linear-gradient(115deg, var(--texto) 10%, var(--rosa) 50%, var(--violeta-glow) 90%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 8px 30px rgba(0,255,136,.35));
+    filter: drop-shadow(0 8px 30px rgba(47,151,221,.28));
   }
   .hero .sub {
     margin-top: 18px;
@@ -265,7 +343,7 @@
     box-shadow: var(--glow-rosa);
     transition: transform .15s ease, box-shadow .2s ease;
   }
-  .hero .cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 40px rgba(0,255,136,.7); }
+  .hero .cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 40px rgba(47,151,221,.6); }
 
   /* ===== Sellos de confianza ===== */
   .sellos {
@@ -296,9 +374,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--rosa), var(--violeta-glow));
+    background: linear-gradient(135deg, #2F97DD, #1565AE);
     box-shadow: var(--glow-rosa);
   }
+  /* Toques navideños: azul, verde pino y rojo */
+  .sello:nth-child(1) .icono { background: linear-gradient(135deg, #2F97DD, #1565AE); }
+  .sello:nth-child(2) .icono { background: linear-gradient(135deg, #43A047, #1B5E20); }
+  .sello:nth-child(3) .icono { background: linear-gradient(135deg, #E53935, #B71C1C); }
   .sello .icono svg { width: 28px; height: 28px; stroke: #fff; }
   .sello h3 { font-size: 17px; font-weight: 700; }
   .sello p { font-size: 13.5px; color: var(--texto-suave); margin-top: 5px; }
@@ -311,10 +393,16 @@
   .titulo-seccion h2 {
     font-size: clamp(26px, 4vw, 38px);
     font-weight: 800;
-    background: linear-gradient(90deg, #fff, var(--rosa-suave));
+    background: linear-gradient(90deg, var(--texto), var(--rosa-suave));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  .titulo-seccion h2::before {
+    content: "❄ ";
+    -webkit-text-fill-color: #7CC7EC;
+    font-size: .72em;
+    vertical-align: middle;
   }
   .titulo-seccion p { color: var(--texto-suave); margin-top: 8px; font-size: 15px; }
 
@@ -338,7 +426,7 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .migajas button:hover { color: #fff; border-color: var(--borde-rosa); }
+  .migajas button:hover { color: var(--texto); border-color: var(--borde-rosa); }
   .migajas .actual { color: var(--rosa-suave); font-weight: 600; font-size: 14px; }
 
   /* ===== Grid de productos ===== */
@@ -385,8 +473,8 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
-  .stock.si  { background: var(--verde-oscuro); color: var(--verde-stock); border: 1px solid rgba(46,230,168,.4); }
-  .stock.no  { background: var(--rojo-oscuro);   color: var(--rojo-stock);   border: 1px solid rgba(255,91,122,.4); }
+  .stock.si  { background: var(--verde-oscuro); color: var(--verde-stock); border: 1px solid rgba(18,128,92,.4); }
+  .stock.no  { background: var(--rojo-oscuro);   color: var(--rojo-stock);   border: 1px solid rgba(198,40,40,.4); }
   .tarjeta .cuerpo {
     padding: 16px 17px 18px;
     flex: 1;
@@ -423,9 +511,9 @@
     text-transform: uppercase;
     padding: 5px 11px;
     border-radius: 999px;
-    background: rgba(0,0,0,.55);
+    background: rgba(255,255,255,.88);
     border: 1px solid var(--borde-rosa);
-    color: var(--rosa-neon);
+    color: var(--rosa-suave);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
@@ -438,9 +526,9 @@
     text-transform: uppercase;
     padding: 5px 12px;
     border-radius: 999px;
-    background: rgba(0,255,136,.12);
+    background: rgba(47,151,221,.14);
     border: 1px solid var(--borde-rosa);
-    color: var(--rosa-neon);
+    color: var(--rosa-suave);
   }
   .filtros-cat {
     display: flex;
@@ -460,10 +548,10 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .filtro-cat:hover { color: #fff; border-color: var(--borde-rosa); box-shadow: var(--glow-rosa); }
+  .filtro-cat:hover { color: var(--texto); border-color: var(--borde-rosa); box-shadow: var(--glow-rosa); }
   .filtro-cat.activo {
-    background: linear-gradient(135deg, var(--rosa), var(--violeta-glow));
-    color: #04140D;
+    background: linear-gradient(135deg, var(--rosa), var(--carmesi));
+    color: #fff;
     border-color: transparent;
     box-shadow: var(--glow-rosa);
   }
@@ -484,10 +572,10 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .seg-btn:hover { color: #fff; border-color: var(--borde-rosa); }
+  .seg-btn:hover { color: var(--texto); border-color: var(--borde-rosa); }
   .seg-btn.activo {
-    background: linear-gradient(135deg, var(--rosa), var(--violeta-glow));
-    color: #04140D;
+    background: linear-gradient(135deg, var(--rosa), var(--carmesi));
+    color: #fff;
     border-color: transparent;
     box-shadow: var(--glow-rosa);
   }
@@ -519,7 +607,7 @@
   .btn-comprar:hover {
     transform: translateY(-2px) scale(1.02);
     filter: brightness(1.1);
-    box-shadow: 0 0 34px rgba(0,255,136,.75);
+    box-shadow: 0 0 34px rgba(47,151,221,.6);
   }
   .btn-comprar:hover svg { transform: translateX(3px); }
   .btn-comprar:active { transform: scale(.97); }
@@ -611,7 +699,7 @@
   }
   .faq-item .respuesta .texto-parrafo { margin: 0 0 10px; }
   .faq-item .respuesta .texto-parrafo:last-child { margin-bottom: 0; }
-  .faq-item .respuesta strong { color: #fff; font-weight: 800; }
+  .faq-item .respuesta strong { color: var(--texto); font-weight: 800; }
   .faq-item .respuesta ul {
     margin: 0 0 10px;
     padding: 0 0 0 18px;
@@ -660,7 +748,7 @@
   /* ===== Pie ===== */
   footer {
     border-top: 1px solid var(--borde);
-    background: rgba(12,8,48,.5);
+    background: rgba(255,255,255,.68);
     text-align: center;
     padding: 26px 20px;
   }
@@ -680,7 +768,7 @@
     position: fixed;
     inset: 0;
     z-index: 60;
-    background: rgba(10,6,25,.7);
+    background: rgba(11,42,71,.42);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     display: none;
@@ -690,7 +778,7 @@
   }
   .overlay.abierto { display: flex; }
   .modal {
-    background: linear-gradient(160deg, #06170F, #000000 60%, #04140D);
+    background: linear-gradient(160deg, #ffffff, #EAF6FF 60%, #DCEFFF);
     border: 1px solid var(--borde);
     border-radius: 24px;
     width: 100%;
@@ -698,7 +786,7 @@
     max-height: 90vh;
     overflow-y: auto;
     padding: 28px;
-    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    box-shadow: 0 30px 70px rgba(12,54,90,.25);
     animation: aparecer .3s ease;
   }
   .modal h2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
@@ -722,36 +810,37 @@
     padding: 11px 14px;
     border-radius: var(--radio-suave);
     border: 1px solid var(--borde);
-    background: rgba(255,255,255,.05);
-    color: #fff;
+    background: rgba(255,255,255,.85);
+    color: var(--texto);
     font-family: inherit;
     font-size: 14.5px;
     outline: none;
     transition: border-color .2s ease;
   }
-  .campo input:focus, .campo textarea:focus { border-color: var(--borde-rosa); box-shadow: 0 0 0 3px rgba(0,255,136,.15); }
+  .campo input::placeholder, .campo textarea::placeholder { color: rgba(11,42,71,.38); }
+  .campo input:focus, .campo textarea:focus { border-color: var(--borde-rosa); box-shadow: 0 0 0 3px rgba(47,151,221,.18); }
   .campo select {
     width: 100%;
     padding: 11px 14px;
     border-radius: var(--radio-suave);
     border: 1px solid var(--borde);
-    background: rgba(255,255,255,.05);
-    color: #fff;
+    background: rgba(255,255,255,.85);
+    color: var(--texto);
     font-family: inherit;
     font-size: 14.5px;
     outline: none;
     cursor: pointer;
     transition: border-color .2s ease;
   }
-  .campo select:focus { border-color: var(--borde-rosa); box-shadow: 0 0 0 3px rgba(0,255,136,.15); }
-  .campo select option { background: #050505; color: #fff; }
+  .campo select:focus { border-color: var(--borde-rosa); box-shadow: 0 0 0 3px rgba(47,151,221,.18); }
+  .campo select option { background: #ffffff; color: var(--texto); }
   .campo textarea { resize: vertical; min-height: 70px; }
   .campo textarea.tipo-caract {
     font-size: 15.5px;
     line-height: 1.7;
     min-height: 220px;
     padding: 14px 16px;
-    background: rgba(255,255,255,.07);
+    background: rgba(255,255,255,.9);
   }
   .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .btn {
@@ -767,9 +856,9 @@
   }
   .btn:active { transform: scale(.97); }
   .btn-rosa   { background: linear-gradient(135deg, var(--rosa), var(--carmesi)); box-shadow: var(--glow-rosa); }
-  .btn-violeta{ background: linear-gradient(135deg, var(--violeta-glow), var(--azul-violeta)); }
-  .btn-gris   { background: rgba(255,255,255,.1); border: 1px solid var(--borde); }
-  .btn-rojo   { background: linear-gradient(135deg, #dc3545, #7f1d1d); }
+  .btn-violeta{ background: linear-gradient(135deg, #2F97DD, #1565AE); box-shadow: 0 0 20px rgba(47,151,221,.3); }
+  .btn-gris   { background: rgba(11,42,71,.06); border: 1px solid var(--borde); color: var(--texto); }
+  .btn-rojo   { background: linear-gradient(135deg, #e53935, #7f1d1d); }
   .btn:hover { filter: brightness(1.12); }
   .acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
   .acciones .btn { flex: 1; min-width: 120px; }
@@ -797,7 +886,7 @@
   .admin-item .acc { display: flex; gap: 6px; flex-wrap: wrap; }
   .mini-btn {
     border: 1px solid var(--borde);
-    background: rgba(255,255,255,.06);
+    background: rgba(255,255,255,.75);
     color: var(--texto-suave);
     font-family: inherit;
     font-size: 12px;
@@ -807,15 +896,15 @@
     cursor: pointer;
     transition: all .15s ease;
   }
-  .mini-btn:hover { color: #fff; border-color: var(--borde-rosa); }
+  .mini-btn:hover { color: var(--texto); border-color: var(--borde-rosa); }
   .mini-btn.rojo:hover { border-color: var(--rojo-stock); color: var(--rojo-stock); background: var(--rojo-oscuro); }
-  .mini-btn.verde { color: var(--verde-stock); border-color: rgba(46,230,168,.35); }
+  .mini-btn.verde { color: var(--verde-stock); border-color: rgba(18,128,92,.35); }
 
   .interruptor {
     width: 44px; height: 24px;
     border-radius: 999px;
     border: 1px solid var(--borde);
-    background: rgba(255,255,255,.08);
+    background: rgba(11,42,71,.12);
     position: relative;
     cursor: pointer;
     transition: background .2s ease;
@@ -826,7 +915,8 @@
     top: 2px; left: 2px;
     width: 18px; height: 18px;
     border-radius: 50%;
-    background: #fff;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(12,54,90,.25);
     transition: left .2s ease;
   }
   .interruptor.on { background: linear-gradient(135deg, var(--verde-stock), #0f9d6e); }
@@ -898,27 +988,27 @@
     color: var(--texto-suave);
   }
   .detalle-tipo .caract .texto strong {
-    color: #fff;
+    color: var(--texto);
     font-weight: 800;
   }
   .detalle-tipo .caract .texto .texto-h1 {
     font-size: 22px;
     font-weight: 800;
-    color: #fff;
+    color: var(--texto);
     margin: 0 0 10px;
     letter-spacing: -.3px;
   }
   .detalle-tipo .caract .texto .texto-h2 {
     font-size: 18px;
     font-weight: 800;
-    color: #fff;
+    color: var(--texto);
     margin: 18px 0 8px;
     letter-spacing: -.2px;
   }
   .detalle-tipo .caract .texto .texto-h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #39FFB0;
+    color: var(--rosa-suave);
     margin: 14px 0 6px;
     letter-spacing: .3px;
     text-transform: uppercase;
@@ -945,7 +1035,7 @@
     height: 7px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--rosa), var(--violeta-glow));
-    box-shadow: 0 0 8px rgba(0,255,136,.6);
+    box-shadow: 0 0 8px rgba(47,151,221,.55);
   }
   .ver-caract {
     display: block;
@@ -996,7 +1086,7 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .tabs-admin .tab:hover { color: #fff; border-color: var(--borde-rosa); }
+  .tabs-admin .tab:hover { color: var(--texto); border-color: var(--borde-rosa); }
   .tabs-admin .tab.activo {
     background: linear-gradient(135deg, var(--rosa), var(--carmesi));
     color: #fff;
@@ -1024,8 +1114,8 @@
     cursor: pointer;
     transition: all .2s ease;
   }
-  .sel-moneda:hover { color: #fff; border-color: var(--borde-rosa); box-shadow: var(--glow-rosa); }
-  .sel-moneda option { background: #050505; color: #fff; }
+  .sel-moneda:hover { color: var(--texto); border-color: var(--borde-rosa); box-shadow: var(--glow-rosa); }
+  .sel-moneda option { background: #ffffff; color: var(--texto); }
   .aviso-vacio { text-align: center; color: var(--texto-tenue); padding: 36px 10px; font-size: 14.5px; }
   .aviso-vacio .icono { font-size: 40px; margin-bottom: 10px; }
 
@@ -1074,6 +1164,7 @@
 <body>
 
 <div class="fondo-brillo"></div>
+<div class="nieve" aria-hidden="true"></div>
 
 <!-- ===== Cabecera ===== -->
 <header>
@@ -1094,6 +1185,11 @@
       <select class="sel-moneda" id="sel-moneda" title="Cambiar moneda" onchange="cambiarMoneda(this.value)">
         <option value="EUR">€ EUR</option>
         <option value="USD">$ USD</option>
+        <option value="MXN">MX$ MXN</option>
+        <option value="ARS">AR$ ARS</option>
+        <option value="COP">CO$ COP</option>
+        <option value="PEN">S/ PEN</option>
+        <option value="CLP">CLP$ CLP</option>
       </select>
     </div>
   </div>
@@ -1406,12 +1502,32 @@
     } catch (e) {}
   }
 
-  /* ============ Moneda (€ / $) ============ */
+  /* ============ Monedas (€, $, pesos y sol) ============ */
   const LK_MONEDA = "temiShopMoneda";
-  const LK_TASA   = "temiShopTasa";
-  const TASA_DEF  = 1.09;                 /* 1 € → $ (si no hay conexión) */
-  let moneda  = cargar(LK_MONEDA, "EUR"); /* "EUR" | "USD" */
-  let tasaUSD = parseFloat(cargar(LK_TASA, TASA_DEF)) || TASA_DEF;
+  const LK_TASAS  = "temiShopTasas";
+  const LK_TASA   = "temiShopTasa";       /* compatibilidad con la versión anterior */
+  const MONEDAS = {
+    EUR: { nombre: "Euro",            prefijo: "",     sufijo: " €", decimales: 2, locale: "es-ES" },
+    USD: { nombre: "Dólar EE. UU.",   prefijo: "$",    sufijo: "",   decimales: 2, locale: "en-US" },
+    MXN: { nombre: "Peso mexicano",   prefijo: "MX$",  sufijo: "",   decimales: 2, locale: "es-MX" },
+    ARS: { nombre: "Peso argentino",  prefijo: "AR$",  sufijo: "",   decimales: 2, locale: "es-AR" },
+    COP: { nombre: "Peso colombiano", prefijo: "CO$",  sufijo: "",   decimales: 0, locale: "es-CO" },
+    PEN: { nombre: "Sol peruano",     prefijo: "S/ ",  sufijo: "",   decimales: 2, locale: "es-PE" },
+    CLP: { nombre: "Peso chileno",    prefijo: "CLP$", sufijo: "",   decimales: 0, locale: "es-CL" }
+  };
+  /* 1 € → moneda (solo si no hay conexión) */
+  const TASAS_DEF = { EUR: 1, USD: 1.11493, MXN: 20.774258, ARS: 1722.981235, COP: 3618.751662, PEN: 3.842693, CLP: 1090.698954 };
+  const monedaGuardada = cargar(LK_MONEDA, "EUR");
+  const monedaValida = typeof monedaGuardada === "string" && Object.prototype.hasOwnProperty.call(MONEDAS, monedaGuardada);
+  let moneda = monedaValida ? monedaGuardada : "EUR";
+  const tasasGuardadas = cargar(LK_TASAS, null);
+  const hayTasasGuardadas = !!(tasasGuardadas && typeof tasasGuardadas === "object");
+  let tasas = Object.assign({}, TASAS_DEF, hayTasasGuardadas ? tasasGuardadas : {});
+  /* Migra la tasa antigua guardada (solo tenía USD) */
+  if (!hayTasasGuardadas) {
+    const vieja = parseFloat(cargar(LK_TASA, NaN));
+    if (isFinite(vieja) && vieja > 0) tasas.USD = vieja;
+  }
 
   function cargar(clave, fallback) {
     try { return JSON.parse(localStorage.getItem(clave)) ?? fallback; }
@@ -1467,19 +1583,32 @@
     d.textContent = s == null ? "" : String(s);
     return d.innerHTML;
   }
+  function formatearMoneda(v) {
+    const cfg = MONEDAS[moneda] || MONEDAS.EUR;
+    const factor = moneda === "EUR" ? 1 : (parseFloat(tasas[moneda]) || 1);
+    const cantidad = v * factor;
+    let numero;
+    try {
+      numero = cantidad.toLocaleString(cfg.locale, {
+        minimumFractionDigits: cfg.decimales,
+        maximumFractionDigits: cfg.decimales
+      });
+    } catch (e) {
+      numero = cantidad.toFixed(cfg.decimales);
+    }
+    return cfg.prefijo + numero + cfg.sufijo;
+  }
   function euros(n) {
     if (n == null || isNaN(parseFloat(n))) return "Consultar";
-    const v = parseFloat(n);
-    if (moneda === "USD") {
-      return "$" + (v * tasaUSD).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-    return v.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+    return formatearMoneda(parseFloat(n));
   }
   function cambiarMoneda(m) {
-    const nuevo = m === "USD" ? "USD" : "EUR";
+    const nuevo = (typeof m === "string" && Object.prototype.hasOwnProperty.call(MONEDAS, m)) ? m : "EUR";
     if (nuevo === moneda) return;
     moneda = nuevo;
     guardar(LK_MONEDA, moneda);
+    const sel = document.getElementById("sel-moneda");
+    if (sel) sel.value = moneda;
     cerrarOverlay("overlay-detalle");
     cerrarOverlay("overlay-compra");
     renderProductos();
@@ -1487,14 +1616,22 @@
   }
   function actualizarTasa() {
     try {
-      fetch("https://api.frankfurter.app/latest?from=EUR&to=USD", { cache: "no-store" })
+      fetch("https://open.er-api.com/v6/latest/EUR", { cache: "no-store" })
         .then(r => r.ok ? r.json() : Promise.reject(new Error("no")))
         .then(d => {
-          if (d && d.rates && d.rates.USD) {
-            tasaUSD = parseFloat(d.rates.USD) || TASA_DEF;
-            guardar(LK_TASA, tasaUSD);
-            if (moneda === "USD") { renderProductos(); renderAdmin(); }
-          }
+          const rates = d && (d.rates || d.conversion_rates);
+          if (!rates) return;
+          let alguna = false;
+          Object.keys(MONEDAS).forEach(cod => {
+            if (cod === "EUR") return;
+            const v = parseFloat(rates[cod]);
+            if (isFinite(v) && v > 0) { tasas[cod] = v; alguna = true; }
+          });
+          if (!alguna) return;
+          tasas.EUR = 1;
+          guardar(LK_TASAS, tasas);
+          guardar(LK_TASA, tasas.USD); /* compatibilidad */
+          if (moneda !== "EUR") { renderProductos(); renderAdmin(); }
         })
         .catch(() => {});
     } catch (e) {}
@@ -1503,7 +1640,7 @@
     const letra = (nombre || "?")[0].toUpperCase();
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>
       <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-      <stop offset='0%' stop-color='%23000000'/><stop offset='100%' stop-color='%2300FF88'/>
+      <stop offset='0%' stop-color='%230B2A47'/><stop offset='100%' stop-color='%232F97DD'/>
       </linearGradient></defs>
       <rect width='400' height='300' fill='url(#g)'/>
       <text x='200' y='178' font-size='110' font-family='Arial' font-weight='bold'
@@ -2021,7 +2158,7 @@
       : `<div class="vacio-tipos" style="padding:24px;"><div style="font-size:30px; margin-bottom:8px;">📦</div>No hay artículos en esta vista.</div>`;
 
     const btnFiltro = (valor, texto) =>
-      `<button class="mini-btn ${filtroStock === valor ? "activo-filtro" : ""}" style="${filtroStock === valor ? "border-color:var(--rosa); color:#fff; background:rgba(255,5,83,.15);" : ""}" onclick="filtroStock='${valor}';renderAdmin()">${texto}</button>`;
+      `<button class="mini-btn ${filtroStock === valor ? "activo-filtro" : ""}" style="${filtroStock === valor ? "border-color:var(--borde-rosa); color:var(--rosa-suave); background:rgba(47,151,221,.14);" : ""}" onclick="filtroStock='${valor}';renderAdmin()">${texto}</button>`;
 
     return `
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
