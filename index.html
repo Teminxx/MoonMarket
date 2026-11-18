@@ -7,46 +7,54 @@
 <link rel="icon" href="https://i.imgur.com/Go4vXwW.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
 <style>
   :root {
-    /* ===== Paleta MOON MARKET · Navidad azul clarito ===== */
-    --rosa:            #2385CB;   /* azul navideño principal */
-    --rosa-neon:       #4FB6F2;   /* azul cielo brillante */
-    --rosa-suave:      #1B6FA8;   /* azul medio para textos */
-    --rosa-pastel:     #DCF1FF;   /* azul hielo muy suave */
-    --rojo-profundo:   #0B2A47;   /* azul noche profundo */
-    --vino:            #0F3355;   /* azul marino */
-    --baya:            #C7E6FA;   /* azul hielo / borde */
-    --carmesi:         #1565AE;   /* azul degradado */
+    /* ===== Paleta MOON MARKET · verde neón nocturno ===== */
+    --rosa:            #39ff88;   /* acento principal */
+    --rosa-neon:       #7dffb0;   /* verde neón claro */
+    --rosa-suave:      #5dffa0;   /* verde para textos de acento */
+    --rosa-pastel:     #b9ffd6;   /* verde muy suave */
+    --rojo-profundo:   #03130a;   /* verde casi negro */
+    --vino:            #04160c;   /* verde bosque profundo */
+    --baya:            #123a24;   /* bordes / verde medio */
+    --carmesi:         #16c768;   /* final de degradados */
 
     /* ===== Paleta secundaria ===== */
-    --morado-noche:    #EEF8FF;   /* blanco azulado */
-    --azul-profundo:   #EAF4FC;   /* fondo general */
-    --azul-media:      #DCEEFF;   /* azul hielo intermedio */
-    --azul-violeta:    #BFE0FF;   /* azul cielo profundo */
-    --lavanda:         #1B6FA8;   /* acentos azules */
-    --violeta-glow:    #66C2F5;   /* brillos azules */
+    --morado-noche:    #04100a;
+    --azul-profundo:   #050d09;   /* fondo base */
+    --azul-media:      #07160e;
+    --azul-violeta:    #0a1f14;
+    --lavanda:         #5dffa0;
+    --violeta-glow:    #39ff88;
 
     /* ===== Derivadas visuales ===== */
-    --fondo-1:         #F4FBFF;
-    --fondo-2:         #E7F5FF;
-    --fondo-3:         #D6EDFD;
-    --brillo-rosa:     rgba(47,151,221,.18);
-    --brillo-violeta:  rgba(102,194,245,.16);
-    --vidrio:          rgba(255,255,255,.62);
-    --vidrio-fuerte:   rgba(255,255,255,.85);
-    --borde:           rgba(47,151,221,.24);
-    --borde-rosa:      rgba(21,101,174,.5);
-    --texto:           #0B2A47;
-    --texto-suave:     rgba(11,42,71,.72);
-    --texto-tenue:     rgba(11,42,71,.5);
-    --verde-stock:     #12805C;
-    --verde-oscuro:    rgba(18,128,92,.12);
-    --rojo-stock:      #C62828;
-    --rojo-oscuro:     rgba(198,40,40,.1);
-    --sombra-tarjeta:  0 18px 40px rgba(12,54,90,.14);
-    --glow-rosa:       0 0 24px rgba(47,151,221,.35);
+    --fondo-1:         #050d09;
+    --fondo-2:         #07140d;
+    --fondo-3:         #0a1c13;
+    --brillo-rosa:     rgba(57,255,136,.18);
+    --brillo-violeta:  rgba(125,255,176,.14);
+    --vidrio:          rgba(14,40,28,.42);
+    --vidrio-fuerte:   rgba(14,40,28,.72);
+    --borde:           rgba(120,255,180,.16);
+    --borde-rosa:      rgba(57,255,136,.5);
+    --texto:           #eafff3;
+    --texto-suave:     rgba(222,255,238,.74);
+    --texto-tenue:     rgba(222,255,238,.5);
+    --verde-stock:     #4dffa6;
+    --verde-oscuro:    rgba(57,255,136,.12);
+    --rojo-stock:      #ff6b7a;
+    --rojo-oscuro:     rgba(255,80,100,.12);
+    --sombra-tarjeta:  0 24px 60px rgba(0,8,4,.45);
+    --glow-rosa:       0 0 26px rgba(57,255,136,.35);
     --radio:           20px;
     --radio-suave:     14px;
   }
@@ -1160,17 +1168,621 @@
     .grid { grid-template-columns: 1fr; }
   }
 </style>
+<style id="tema-neon">
+  /* ============================================================
+     MOON MARKET · motion site verde neón
+     Capa de tema. Sobrescribe el CSS heredado sin tocar el HTML
+     generado por el JS de la tienda.
+     ============================================================ */
+
+  /* Ocultar el tema invernal anterior */
+  .fondo-brillo,
+  .nieve { display: none !important; }
+  header::after { display: none !important; }
+
+  /* Tipografía base */
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter Tight", "Segoe UI", Arial, sans-serif;
+    background: var(--azul-profundo);
+    color: var(--texto);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .marca .nombre, .tarjeta .nombre {
+    font-family: "Inter Tight", "Segoe UI", Arial, sans-serif;
+  }
+  ::selection { background: rgba(57,255,136,.28); color: #eafff3; }
+
+  /* Cabecera flotante de cristal */
+  header {
+    position: sticky;
+    top: 14px;
+    width: calc(100% - 28px);
+    max-width: 1180px;
+    margin: 14px auto 0;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: rgba(8,24,16,.55);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow: 0 18px 45px rgba(0,10,5,.35), inset 0 1px 0 rgba(255,255,255,.06);
+    z-index: 50;
+  }
+  .nav { padding: 10px 18px; }
+  .marca img {
+    width: 38px; height: 38px;
+    border-radius: 11px;
+    border: 1px solid var(--borde-rosa);
+    box-shadow: 0 0 18px rgba(57,255,136,.28);
+  }
+  .marca .nombre {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: -.01em;
+    background: none;
+    -webkit-text-fill-color: var(--texto);
+    color: var(--texto);
+  }
+  .marca .nombre small {
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: .18em;
+    color: var(--texto-tenue);
+    -webkit-text-fill-color: var(--texto-tenue);
+  }
+  .enlaces {
+    gap: 4px;
+    padding: 4px;
+    background: rgba(57,255,136,.05);
+    border: 1px solid var(--borde);
+  }
+  .enlaces button {
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 500;
+    font-size: 13.5px;
+    padding: 8px 16px;
+    color: var(--texto-suave);
+  }
+  .enlaces button:hover { color: var(--texto); background: rgba(57,255,136,.08); }
+  .enlaces button.activo {
+    background: rgba(57,255,136,.16);
+    color: var(--rosa);
+    box-shadow: none;
+  }
+  .sel-moneda {
+    font-family: "Fira Code", monospace;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: .02em;
+    padding: 9px 11px;
+    border-radius: 999px;
+    background: rgba(57,255,136,.06);
+    border: 1px solid var(--borde);
+    color: var(--texto-suave);
+  }
+  .sel-moneda:hover { color: var(--texto); border-color: var(--borde-rosa); box-shadow: 0 0 18px rgba(57,255,136,.18); }
+  .sel-moneda option { background: #07160e; color: var(--texto); }
+
+  /* Contenido por encima de la escena */
+  main, footer { position: relative; z-index: 1; }
+  main { padding-top: 26px; }
+
+  /* Superficies de cristal */
+  .sello,
+  .tarjeta,
+  .caja-soporte,
+  .faq-item,
+  .cabecera-producto,
+  .detalle-tipo .caract,
+  .admin-item,
+  .tipo-editor,
+  .modal {
+    background: linear-gradient(160deg, rgba(57,255,136,.10), rgba(8,40,24,.14));
+    border: 1px solid var(--borde);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), var(--sombra-tarjeta);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    background-color: rgba(6,20,13,.62);
+  }
+  .sello,
+  .tarjeta,
+  .faq-item,
+  .caja-soporte,
+  .admin-item,
+  .cabecera-producto,
+  .detalle-tipo .caract,
+  .tipo-editor {
+    background-color: rgba(7,26,17,.72);
+  }
+  .sello:hover,
+  .tarjeta:hover,
+  .cabecera-producto:hover {
+    border-color: var(--borde-rosa);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.09), var(--sombra-tarjeta), 0 0 34px rgba(57,255,136,.16);
+  }
+  .sello:hover { transform: translateY(-6px); }
+
+  /* Tarjetas de producto */
+  .tarjeta .foto { background: linear-gradient(135deg, #0a2417, #06170f); }
+  .tarjeta .foto::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 48%;
+    background: linear-gradient(180deg, transparent, rgba(3,15,9,.62));
+    pointer-events: none;
+  }
+  .tarjeta .nombre { font-size: 17px; font-weight: 500; letter-spacing: -.01em; }
+  .tarjeta .tipos-mini { color: var(--texto-tenue); }
+  .tarjeta .precio {
+    font-family: "Fira Code", monospace;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--rosa-suave);
+    letter-spacing: -.02em;
+  }
+  .tarjeta .ver-mas,
+  .ver-caract {
+    font-family: "Fira Code", monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: .08em;
+    color: var(--rosa-suave);
+  }
+  .barra { background: linear-gradient(90deg, var(--rosa), transparent 85%); opacity: .5; }
+  .cat-chip,
+  .stock,
+  .cat-etiqueta {
+    font-family: "Fira Code", monospace;
+    font-weight: 400;
+    letter-spacing: .08em;
+    background: rgba(4,18,11,.72);
+    border: 1px solid var(--borde);
+    color: var(--rosa-suave);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .cat-etiqueta { background: rgba(57,255,136,.08); }
+  .stock.si { background: rgba(4,24,15,.8); color: var(--verde-stock); border-color: rgba(77,255,166,.4); }
+  .stock.no { background: rgba(30,8,12,.8); color: var(--rojo-stock); border-color: rgba(255,107,122,.4); }
+
+  /* Botones y píldoras con acento verde (texto oscuro) */
+  .hero .cta,
+  .btn-comprar,
+  .btn-rosa,
+  .btn-violeta,
+  .filtro-cat.activo,
+  .seg-btn.activo,
+  .tabs-admin .tab.activo,
+  .interruptor.on {
+    background: linear-gradient(135deg, #39ff88, #16c768);
+    color: #03130a;
+    border-color: transparent;
+    box-shadow: 0 0 26px rgba(57,255,136,.32);
+  }
+  .hero .cta { font-weight: 600; }
+  .hero .cta:hover { box-shadow: 0 0 42px rgba(57,255,136,.5); }
+  .btn-comprar svg { stroke: #03130a; }
+  .btn-comprar { font-weight: 600; letter-spacing: .04em; }
+  .btn-comprar:hover { box-shadow: 0 0 34px rgba(57,255,136,.5); filter: none; }
+  .btn-rojo { background: linear-gradient(135deg, #ff6b7a, #b81f34); color: #1a0408; }
+  .btn-gris {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+  }
+  .btn-gris:hover { border-color: var(--borde-rosa); }
+  .btn { font-weight: 500; }
+  .filtro-cat,
+  .seg-btn,
+  .migajas button,
+  .tab {
+    background: rgba(14,40,28,.42);
+    border: 1px solid var(--borde);
+    color: var(--texto-suave);
+    font-weight: 500;
+  }
+  .filtro-cat:hover,
+  .seg-btn:hover,
+  .migajas button:hover { color: var(--texto); border-color: var(--borde-rosa); box-shadow: 0 0 20px rgba(57,255,136,.14); }
+  .filtro-cat.activo,
+  .seg-btn.activo { color: #03130a; box-shadow: 0 0 26px rgba(57,255,136,.32); }
+  .migajas .actual {
+    font-family: "Fira Code", monospace;
+    font-size: 12px;
+    color: var(--rosa-suave);
+  }
+
+  /* Títulos de sección */
+  .titulo-seccion h2 {
+    font-weight: 300;
+    font-size: clamp(30px, 5vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -.025em;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--texto);
+  }
+  .titulo-seccion h2::before { content: none; display: none; }
+  .titulo-seccion p { color: var(--texto-suave); font-size: 15px; }
+  .acento-serif {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rosa);
+    letter-spacing: 0;
+  }
+
+  /* Sellos: iconos de línea sin recuadro */
+  .sello { text-align: left; padding: 26px 24px; border-radius: var(--radio); }
+  .sello:nth-child(n) .icono {
+    width: 44px; height: 44px;
+    margin: 0 0 16px;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .sello .icono svg {
+    width: 30px; height: 30px;
+    stroke: var(--rosa);
+    stroke-width: 1.5;
+    fill: none;
+    filter: drop-shadow(0 0 8px rgba(57,255,136,.35));
+  }
+  .sello h3 { font-size: 16px; font-weight: 500; letter-spacing: -.01em; }
+  .sello p { font-size: 13.5px; color: var(--texto-suave); }
+
+  /* Soporte */
+  .caja-soporte { padding: 34px 28px; }
+  .caja-soporte .icono-grande {
+    background: none;
+    box-shadow: none;
+    width: 52px; height: 52px;
+    margin-bottom: 12px;
+    color: var(--rosa);
+  }
+  .caja-soporte .icono-grande svg { width: 44px; height: 44px; stroke: var(--rosa); }
+  .caja-soporte h3 { font-size: 20px; font-weight: 500; }
+  .caja-soporte p { color: var(--texto-suave); }
+  .boton-contacto { border-radius: 999px; font-weight: 500; }
+  .boton-contacto:hover { box-shadow: 0 0 26px rgba(88,101,242,.45); }
+
+  /* FAQ */
+  .faq-item { border-radius: var(--radio-suave); }
+  .faq-item.abierto { border-color: var(--borde-rosa); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 0 30px rgba(57,255,136,.12); }
+  .faq-item .pregunta { font-weight: 500; color: var(--texto); }
+  .faq-item .pregunta .flecha { color: var(--rosa); }
+  .faq-item .respuesta { color: var(--texto-suave); }
+
+  /* Pie */
+  footer {
+    border-top: 1px solid var(--borde);
+    background: rgba(4,14,9,.52);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: "Moon Market";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-46%);
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 300;
+    font-size: clamp(64px, 15vw, 210px);
+    line-height: .8;
+    letter-spacing: -.05em;
+    white-space: nowrap;
+    background: linear-gradient(180deg, rgba(57,255,136,.18), transparent 88%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    pointer-events: none;
+    z-index: 0;
+  }
+  footer > * { position: relative; z-index: 1; }
+  footer .f-logo { color: var(--rosa-suave); font-weight: 500; }
+  footer p { color: var(--texto-tenue); }
+
+  /* Modales y formularios */
+  .overlay { background: rgba(2,8,5,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .modal {
+    background: linear-gradient(160deg, rgba(10,32,21,.97), rgba(5,16,11,.985));
+    border: 1px solid var(--borde);
+    box-shadow: 0 40px 90px rgba(0,8,4,.6), inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  .modal h2 { font-weight: 500; letter-spacing: -.02em; }
+  .modal .sub { color: var(--texto-tenue); }
+  .campo label { font-family: "Fira Code", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: .12em; color: var(--texto-suave); }
+  .campo input[type="text"],
+  .campo input[type="number"],
+  .campo input[type="url"],
+  .campo input[type="password"],
+  .campo textarea,
+  .campo select {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    border-radius: 12px;
+  }
+  .campo input:focus,
+  .campo textarea:focus,
+  .campo select:focus {
+    border-color: var(--borde-rosa);
+    box-shadow: 0 0 0 3px rgba(57,255,136,.16);
+  }
+  .campo input::placeholder,
+  .campo textarea::placeholder { color: rgba(222,255,238,.34); }
+  .campo select option { background: #07160e; color: var(--texto); }
+  .campo textarea.tipo-caract { background: rgba(255,255,255,.04); }
+  .aviso { color: var(--texto-tenue); }
+  .aviso a { color: var(--rosa-suave); }
+
+  /* Admin */
+  .mini-btn {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--borde);
+    color: var(--texto-suave);
+    font-weight: 500;
+  }
+  .mini-btn:hover { color: var(--texto); border-color: var(--borde-rosa); background: rgba(57,255,136,.08); }
+  .mini-btn.verde { color: var(--verde-stock); border-color: rgba(77,255,166,.35); }
+  .mini-btn.rojo:hover { border-color: var(--rojo-stock); color: var(--rojo-stock); background: var(--rojo-oscuro); }
+  .interruptor {
+    background: rgba(255,255,255,.12);
+    border: 1px solid var(--borde);
+  }
+  .interruptor::after { background: #eafff3; }
+  .interruptor.on { background: linear-gradient(135deg, #39ff88, #16c768); }
+  .admin-item { border-radius: var(--radio-suave); }
+  .admin-item img { border: 1px solid var(--borde); }
+  .tabs-admin .tab { border-radius: 999px; }
+  .tabs-admin .tab.activo { color: #03130a; }
+  .admin-oculto:hover { box-shadow: 0 0 20px rgba(57,255,136,.25); }
+
+  /* Detalle de producto */
+  .detalle-tipo .precio-detalle {
+    font-family: "Fira Code", monospace;
+    font-weight: 400;
+    color: var(--rosa-suave);
+  }
+  .detalle-tipo .caract h4 {
+    font-family: "Fira Code", monospace;
+    font-weight: 400;
+    letter-spacing: .14em;
+    color: var(--rosa-suave);
+  }
+  .detalle-tipo .caract .texto { color: var(--texto-suave); }
+  .detalle-tipo .caract .texto .texto-h1,
+  .detalle-tipo .caract .texto .texto-h2,
+  .detalle-tipo .caract .texto strong { color: var(--texto); }
+  .detalle-tipo .caract .texto .texto-h3 { color: var(--rosa-suave); }
+  .detalle-tipo .caract .texto ul li::before {
+    background: var(--rosa);
+    box-shadow: 0 0 8px rgba(57,255,136,.55);
+  }
+  .cabecera-producto h2 { font-weight: 500; letter-spacing: -.025em; }
+  .cabecera-producto p { color: var(--texto-suave); }
+
+  /* Vacíos y errores */
+  .vacio-tipos { color: var(--texto-tenue); border-color: var(--borde); }
+  .error-pw { color: var(--rojo-stock); }
+  .aviso-vacio { color: var(--texto-tenue); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar-track { background: #04100a; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(var(--rosa), #16c768); }
+
+  /* Enlaces de foco visibles */
+  :focus-visible { outline: 2px solid var(--rosa); outline-offset: 3px; }
+
+  @media (max-width: 520px) {
+    header { width: calc(100% - 20px); top: 10px; margin-top: 10px; }
+    .nav { padding: 8px 12px; }
+    .enlaces { background: rgba(57,255,136,.05); }
+    .enlaces button { font-weight: 500; }
+  }
+
+  /* ===== Portada ===== */
+  .hero {
+    position: relative;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-height: calc(100svh - 120px);
+    padding: 80px 0 96px;
+  }
+  .hero::before,
+  .hero::after { content: none; display: none; }
+  .hero .logo-gigante {
+    width: 64px; height: 64px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--borde-rosa);
+    box-shadow: 0 0 0 6px rgba(57,255,136,.07), 0 0 30px rgba(57,255,136,.32);
+    object-fit: cover;
+  }
+  .hero h1.hero-titulo {
+    margin: 0;
+    font-family: "Inter Tight", sans-serif;
+    font-size: clamp(56px, 10vw, 150px);
+    font-weight: 300;
+    line-height: .9;
+    letter-spacing: -.035em;
+    color: var(--texto);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    filter: none;
+  }
+  .hero-titulo .linea {
+    display: block;
+    overflow: hidden;
+    padding-bottom: .04em;
+  }
+  .hero-titulo .linea-int {
+    display: block;
+    will-change: transform;
+  }
+  .hero-titulo .serif {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    color: var(--rosa);
+  }
+  .hero .sub {
+    margin-top: 22px;
+    max-width: 580px;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    letter-spacing: 0;
+    color: var(--texto-suave);
+  }
+  .hero .sub strong { color: var(--rosa); font-weight: 500; }
+  .hero .cta {
+    margin-top: 30px;
+    padding: 14px 30px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #03130a;
+    border-radius: 999px;
+  }
+
+  /* Tarjeta "Desliza" */
+  .tarjeta-scroll {
+    position: absolute;
+    right: 0;
+    bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    min-width: 138px;
+    padding: 15px 19px 13px;
+    border-radius: 14px;
+    background: linear-gradient(160deg, rgba(57,255,136,.13), rgba(8,40,24,.34));
+    border: 1px solid var(--borde);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 18px 40px rgba(0,8,4,.35);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    cursor: pointer;
+    user-select: none;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .tarjeta-scroll:hover {
+    transform: translateY(-3px);
+    border-color: var(--borde-rosa);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 22px 46px rgba(0,8,4,.4), 0 0 28px rgba(57,255,136,.16);
+  }
+  .ts-etiqueta {
+    font-family: "Fira Code", monospace;
+    font-size: 9.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--texto-tenue);
+  }
+  .ts-titulo { font-size: 15px; font-weight: 500; color: var(--texto); }
+  .ts-sub { font-size: 12.5px; color: var(--texto-suave); }
+  .ts-flecha {
+    margin-top: 7px;
+    font-size: 17px;
+    line-height: 1;
+    color: var(--rosa);
+    animation: flechaRebote 1.8s ease-in-out infinite;
+  }
+  @keyframes flechaRebote {
+    0%, 100% { transform: translateY(0); opacity: .55; }
+    50%      { transform: translateY(4px); opacity: 1; }
+  }
+
+  /* ===== Reveal al hacer scroll ===== */
+  .reveal { opacity: 0; translate: 0 28px; }
+  .reveal.visible {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity .9s cubic-bezier(.2,.7,.2,1),
+      translate .9s cubic-bezier(.2,.7,.2,1);
+  }
+
+  @media (max-width: 820px) {
+    .hero { min-height: calc(100svh - 100px); padding: 54px 0 104px; }
+    .hero-titulo { font-size: clamp(48px, 12vw, 96px); }
+    .hero .sub { font-size: 16.5px; }
+    .tarjeta-scroll { right: 0; bottom: 16px; min-width: 120px; padding: 12px 15px 11px; }
+    .sellos { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 520px) {
+    .hero { min-height: calc(100svh - 200px); padding: 34px 0 118px; }
+    .hero .logo-gigante { width: 56px; height: 56px; margin-bottom: 18px; }
+    .hero-titulo { font-size: clamp(46px, 14vw, 82px); }
+    .hero .sub { margin-top: 16px; font-size: 15.5px; }
+    .tarjeta-scroll { min-width: 104px; padding: 10px 13px 9px; bottom: 12px; }
+    .ts-titulo { font-size: 13.5px; }
+    .ts-sub { font-size: 11.5px; }
+    .ts-flecha { font-size: 15px; }
+    .cat-chip, .stock { font-size: 9px; padding: 4px 8px; letter-spacing: .06em; }
+    .cat-chip { left: 10px; top: 10px; }
+    .stock { right: 10px; top: 10px; }
+  }
+
+  /* ===== Movimiento reducido ===== */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+    .seccion { animation: none !important; }
+    .reveal { opacity: 1 !important; translate: 0 0 !important; }
+  }
+
+  /* ===== Escena fija de fondo (detrás de todo) ===== */
+  #escena-neon {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background:
+      radial-gradient(1100px 800px at 75% 12%, rgba(57,255,136,.10), transparent 62%),
+      radial-gradient(900px 700px at 12% 88%, rgba(22,199,104,.08), transparent 60%),
+      linear-gradient(165deg, #050d09 0%, #07140d 48%, #0a1c13 100%);
+  }
+  #fondo-neon,
+  #objeto-neon {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  #fondo-neon { z-index: 0; }
+  #objeto-neon { z-index: 1; }
+  #escena-neon.sin-webgl #fondo-neon { display: none; }
+  #escena-neon.sin-3d #objeto-neon { display: none; }
+</style>
 </head>
 <body>
 
-<div class="fondo-brillo"></div>
-<div class="nieve" aria-hidden="true"></div>
+<div id="escena-neon" aria-hidden="true">
+  <canvas id="fondo-neon"></canvas>
+  <canvas id="objeto-neon"></canvas>
+</div>
 
 <!-- ===== Cabecera ===== -->
 <header>
   <div class="nav">
     <div class="marca" onclick="irA('home')">
-      <img src="https://i.imgur.com/Go4vXwW.jpeg" alt="Moon Market">
+      <img src="https://i.imgur.com/Go4vXwW.jpeg" alt="Moon Market" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%2306160f%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2716%27 fill=%27none%27 stroke=%27%2339ff88%27 stroke-width=%273%27/%3E%3Cpath d=%27M38 22a12 12 0 1 0 0 20 12 12 0 0 1 0-20z%27 fill=%27%2339ff88%27/%3E%3C/svg%3E'">
       <div class="nombre">Moon Market
         <small>Premium & Digital</small>
       </div>
@@ -1200,12 +1812,21 @@
   <!-- ===== INICIO ===== -->
   <section id="seccion-home" class="seccion activa">
     <div class="hero">
-      <img class="logo-gigante" src="https://i.imgur.com/Go4vXwW.jpeg" alt="Moon Market">
-      <h1>Moon Market</h1>
+      <img class="logo-gigante" src="https://i.imgur.com/Go4vXwW.jpeg" alt="Moon Market" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%2306160f%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2716%27 fill=%27none%27 stroke=%27%2339ff88%27 stroke-width=%273%27/%3E%3Cpath d=%27M38 22a12 12 0 1 0 0 20 12 12 0 0 1 0-20z%27 fill=%27%2339ff88%27/%3E%3C/svg%3E'">
+      <h1 class="hero-titulo">
+        <span class="linea"><span class="linea-int">Moon</span></span>
+        <span class="linea"><span class="linea-int serif">Market</span></span>
+      </h1>
       <p class="sub"><strong>tu tienda de confianza</strong> · Cuentas premium & servicios digitales</p>
       <button class="cta" onclick="irA('productos')">Ver productos
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
+      <div class="tarjeta-scroll" id="tarjeta-scroll" role="button" tabindex="0" aria-label="Desliza y descubre">
+        <span class="ts-etiqueta">Scroll</span>
+        <span class="ts-titulo">Desliza</span>
+        <span class="ts-sub">y descubre</span>
+        <span class="ts-flecha" aria-hidden="true">↓</span>
+      </div>
     </div>
     <div class="sellos">
       <div class="sello">
@@ -1276,7 +1897,7 @@
 
 <footer>
   <div class="f-logo">
-    <img src="https://i.imgur.com/Go4vXwW.jpeg" alt="">
+    <img src="https://i.imgur.com/Go4vXwW.jpeg" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%2306160f%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2716%27 fill=%27none%27 stroke=%27%2339ff88%27 stroke-width=%273%27/%3E%3Cpath d=%27M38 22a12 12 0 1 0 0 20 12 12 0 0 1 0-20z%27 fill=%27%2339ff88%27/%3E%3C/svg%3E'">
     Moon Market
   </div>
   <p>© <span id="anio"></span> Moon Market · Cuentas premium & servicios digitales · Todos los derechos reservados</p>
@@ -2705,6 +3326,716 @@
   renderFaqPublico();
   renderProductos();
   cargarDatosPublicos();
+</script>
+
+<!-- ============================================================
+     Motion layer (script aparte: no modifica la lógica de la tienda)
+     ============================================================ -->
+<script>
+(function () {
+  "use strict";
+
+  var escena = document.getElementById("escena-neon");
+  var canvas = document.getElementById("fondo-neon");
+  if (!escena || !canvas) return;
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var gl = null;
+  try {
+    gl = canvas.getContext("webgl", { antialias: false, alpha: false, depth: false, powerPreference: "high-performance" })
+      || canvas.getContext("experimental-webgl");
+  } catch (e) { gl = null; }
+  if (!gl) { escena.classList.add("sin-webgl"); return; }
+
+  var VERT = [
+    "attribute vec2 aPos;",
+    "varying vec2 vUv;",
+    "void main(){",
+    "  vUv = aPos * 0.5 + 0.5;",
+    "  gl_Position = vec4(aPos, 0.0, 1.0);",
+    "}"
+  ].join("\n");
+
+  var FRAG = [
+    "precision highp float;",
+    "varying vec2 vUv;",
+    "uniform vec2 uRes;",
+    "uniform vec2 uMouse;",
+    "uniform vec2 uTilt;",
+    "uniform float uTime;",
+    "uniform float uPresence;",
+    "uniform float uDim;",
+    "",
+    "float hash21(vec2 p){",
+    "  p = fract(p * vec2(123.34, 456.21));",
+    "  p += dot(p, p + 45.32);",
+    "  return fract(p.x * p.y);",
+    "}",
+    "float vnoise(vec2 p){",
+    "  vec2 i = floor(p);",
+    "  vec2 f = fract(p);",
+    "  vec2 u = f * f * (3.0 - 2.0 * f);",
+    "  float a = hash21(i);",
+    "  float b = hash21(i + vec2(1.0, 0.0));",
+    "  float c = hash21(i + vec2(0.0, 1.0));",
+    "  float d = hash21(i + vec2(1.0, 1.0));",
+    "  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);",
+    "}",
+    "float fbm(vec2 p){",
+    "  float v = 0.0;",
+    "  float a = 0.55;",
+    "  for (int i = 0; i < 4; i++){",
+    "    v += a * vnoise(p);",
+    "    p = p * 2.03 + vec2(11.7, 5.3);",
+    "    a *= 0.5;",
+    "  }",
+    "  return v;",
+    "}",
+    "float pattern(vec2 uv, float t){",
+    "  vec2 asp = vec2(uRes.x / max(uRes.y, 1.0), 1.0);",
+    "  vec2 q = (uv - 0.5) * asp * 1.45 + uTilt;",
+    "  float slow = t * 0.06;",
+    "  float f1 = fbm(q * vec2(1.15, 1.7) + vec2(slow * 1.2, -slow * 0.8) + vec2(0.0, fbm(q * 0.8) * 0.6));",
+    "  float f2 = fbm(q * 0.65 + vec2(-slow * 0.7, slow * 0.5) - f1 * 0.35);",
+    "  float aurora = smoothstep(0.18, 0.95, f2 * 0.9 + f1 * 0.35);",
+    "  float glow1 = smoothstep(0.9, 0.0, length((uv - vec2(0.75, 0.18)) * asp));",
+    "  float glow2 = smoothstep(0.75, 0.0, length((uv - vec2(0.18, 0.85)) * asp));",
+    "  vec2 cell = floor(uv * uRes / 2.5);",
+    "  float twinkle = 0.55 + 0.45 * sin(t * 1.7 + hash21(cell + 7.0) * 40.0);",
+    "  float star = step(0.9965, hash21(cell)) * twinkle;",
+    "  return clamp(aurora * 0.75 + glow1 * 0.35 + glow2 * 0.22 + star * 0.5, 0.0, 1.6);",
+    "}",
+    "void main(){",
+    "  vec2 uv = vUv;",
+    "  float dist = distance(uv, uMouse);",
+    "  float ripple = sin(dist * 20.0 - uTime * 5.0) * 0.006;",
+    "  float strength = smoothstep(0.2, 0.0, dist) * uPresence;",
+    "  vec2 dir = normalize(uv - uMouse + vec2(0.00001));",
+    "  vec2 off = dir * ripple * strength;",
+    "  float R = pattern(uv + off + vec2(0.005, 0.0) * strength, uTime);",
+    "  float G = pattern(uv + off, uTime);",
+    "  float B = pattern(uv + off - vec2(0.005, 0.0) * strength, uTime);",
+    "  vec3 col = vec3(0.010, 0.028, 0.018);",
+    "  col += vec3(0.02, 0.22, 0.10) * R * R * 0.45;",
+    "  col += vec3(0.03, 0.42, 0.18) * G * G * 0.55;",
+    "  col += vec3(0.02, 0.20, 0.11) * B * B * 0.38;",
+    "  col += vec3(0.01, 0.04, 0.02) * (1.0 - smoothstep(0.0, 0.95, length((uv - 0.5) * vec2(1.2, 1.0))));",
+    "  col *= mix(1.0, 0.35, uDim);",
+    "  float vig = smoothstep(1.25, 0.25, length((uv - 0.5) * vec2(1.08, 1.0)));",
+    "  col *= mix(0.40, 1.0, vig);",
+    "  gl_FragColor = vec4(pow(max(col, 0.0), vec3(0.95)), 1.0);",
+    "}"
+  ].join("\n");
+
+  function compilar(tipo, fuente) {
+    var sh = gl.createShader(tipo);
+    gl.shaderSource(sh, fuente);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  var vs = compilar(gl.VERTEX_SHADER, VERT);
+  var fs = compilar(gl.FRAGMENT_SHADER, FRAG);
+  var prog = vs && fs ? gl.createProgram() : null;
+  if (prog) {
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) prog = null;
+  }
+  if (!prog) { escena.classList.add("sin-webgl"); return; }
+  gl.useProgram(prog);
+
+  var buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+  var aPos = gl.getAttribLocation(prog, "aPos");
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  var U = {
+    res: gl.getUniformLocation(prog, "uRes"),
+    mouse: gl.getUniformLocation(prog, "uMouse"),
+    tilt: gl.getUniformLocation(prog, "uTilt"),
+    time: gl.getUniformLocation(prog, "uTime"),
+    presence: gl.getUniformLocation(prog, "uPresence"),
+    dim: gl.getUniformLocation(prog, "uDim")
+  };
+
+  var DPR = Math.min(window.devicePixelRatio || 1, 1.25);
+  var mouse = { x: 0.5, y: 0.5 };
+  var mouseObjetivo = { x: 0.5, y: 0.5 };
+  var tilt = { x: 0, y: 0 };
+  var tiltObjetivo = { x: 0, y: 0 };
+  var presencia = 0;
+  var presenciaObjetivo = 0;
+  var dim = 0;
+  var dimObjetivo = 0;
+  var tiempo = 0;
+  var ultimo = 0;
+  var raf = 0;
+
+  function medir() {
+    var w = Math.max(1, Math.floor(window.innerWidth * DPR));
+    var h = Math.max(1, Math.floor(window.innerHeight * DPR));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+    gl.viewport(0, 0, w, h);
+  }
+
+  function seccionActiva() {
+    var s = document.querySelector(".seccion.activa");
+    return s ? s.id.replace("seccion-", "") : "home";
+  }
+
+  function actualizarDim(sinSuavizar) {
+    dimObjetivo = seccionActiva() === "home" ? 0 : 0.65;
+    if (sinSuavizar) dim = dimObjetivo;
+  }
+
+  function pintar() {
+    medir();
+    gl.uniform2f(U.res, canvas.width, canvas.height);
+    gl.uniform2f(U.mouse, mouse.x, mouse.y);
+    gl.uniform2f(U.tilt, tilt.x, tilt.y);
+    gl.uniform1f(U.time, tiempo);
+    gl.uniform1f(U.presence, presencia);
+    gl.uniform1f(U.dim, dim);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+
+  function bucle(ts) {
+    raf = window.requestAnimationFrame(bucle);
+    if (!ultimo) ultimo = ts;
+    var dt = Math.min((ts - ultimo) / 1000, 0.05);
+    ultimo = ts;
+    tiempo += dt;
+
+    var kPres = 1 - Math.exp(-6 * dt);
+    presencia += (presenciaObjetivo - presencia) * kPres;
+    mouse.x += (mouseObjetivo.x - mouse.x) * kPres;
+    mouse.y += (mouseObjetivo.y - mouse.y) * kPres;
+
+    var kTilt = 1 - Math.exp(-dt / 0.1);
+    tilt.x += (tiltObjetivo.x - tilt.x) * kTilt;
+    tilt.y += (tiltObjetivo.y - tilt.y) * kTilt;
+
+    var kDim = 1 - Math.exp(-dt / 0.25);
+    dim += (dimObjetivo - dim) * kDim;
+
+    pintar();
+  }
+
+  function arrancar() {
+    if (raf) return;
+    ultimo = 0;
+    raf = window.requestAnimationFrame(bucle);
+  }
+  function parar() {
+    if (raf) window.cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  window.addEventListener("resize", function () {
+    if (reduceMotion.matches) pintar();
+  }, { passive: true });
+
+  window.addEventListener("pointermove", function (e) {
+    mouseObjetivo.x = e.clientX / Math.max(1, window.innerWidth);
+    mouseObjetivo.y = 1 - e.clientY / Math.max(1, window.innerHeight);
+    var dx = (mouseObjetivo.x - 0.5) * 0.014;
+    var dy = (mouseObjetivo.y - 0.5) * 0.014;
+    tiltObjetivo.x = dx;
+    tiltObjetivo.y = dy;
+    presenciaObjetivo = 1;
+  }, { passive: true });
+
+  document.addEventListener("pointerleave", function () { presenciaObjetivo = 0; });
+  window.addEventListener("blur", function () { presenciaObjetivo = 0; });
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) parar();
+    else if (!reduceMotion.matches) arrancar();
+  });
+
+  var obs = new MutationObserver(function () { actualizarDim(false); });
+  ["home", "productos", "soporte", "admin"].forEach(function (s) {
+    var el = document.getElementById("seccion-" + s);
+    if (el) obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+  });
+
+  reduceMotion.addEventListener("change", function () {
+    if (reduceMotion.matches) {
+      parar();
+      presencia = 0;
+      tilt.x = tilt.y = 0;
+      dim = dimObjetivo;
+      pintar();
+    } else {
+      actualizarDim(true);
+      arrancar();
+    }
+  });
+
+  actualizarDim(true);
+  medir();
+
+  if (reduceMotion.matches) {
+    tiempo = 12;
+    pintar();
+  } else {
+    arrancar();
+  }
+})();
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var html = document.documentElement;
+
+  /* ---------- Entrada animada del hero (una sola vez) ---------- */
+  function entradaHero() {
+    if (reduceMotion.matches) return;
+    var titulo = document.querySelector(".hero-titulo");
+    if (!titulo) return;
+    var lineas = titulo.querySelectorAll(".linea-int");
+    var opciones = { easing: "cubic-bezier(.2,.75,.2,1)", fill: "backwards" };
+
+    function animar(el, keyframes, duracion, retardo) {
+      if (!el || typeof el.animate !== "function") return;
+      el.animate(keyframes, Object.assign({ duration: duracion, delay: retardo }, opciones));
+    }
+
+    html.classList.add("entrando-hero");
+    animar(document.querySelector("header"),
+      [{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "translateY(0)" }], 900, 0);
+    animar(lineas[0],
+      [{ transform: "translateY(105%)" }, { transform: "translateY(0)" }], 1100, 250);
+    animar(lineas[1],
+      [{ transform: "translateY(105%)" }, { transform: "translateY(0)" }], 1100, 370);
+    animar(document.querySelector(".hero .sub"),
+      [{ opacity: 0, transform: "translateY(14px)" }, { opacity: 1, transform: "translateY(0)" }], 900, 620);
+    animar(document.querySelector(".hero .cta"),
+      [{ opacity: 0, transform: "translateY(18px)" }, { opacity: 1, transform: "translateY(0)" }], 900, 740);
+    animar(document.querySelector(".tarjeta-scroll"),
+      [{ opacity: 0, transform: "translateY(40px) scale(.96)" }, { opacity: 1, transform: "translateY(0) scale(1)" }], 1100, 880);
+
+    window.setTimeout(function () { html.classList.remove("entrando-hero"); }, 3000);
+  }
+
+  /* ---------- Tarjeta "Desliza" ---------- */
+  var tarjetaScroll = document.getElementById("tarjeta-scroll");
+  if (tarjetaScroll) {
+    var irASellos = function () {
+      var destino = document.querySelector(".sellos");
+      if (destino) {
+        destino.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+      }
+    };
+    tarjetaScroll.addEventListener("click", irASellos);
+    tarjetaScroll.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        irASellos();
+      }
+    });
+  }
+
+  /* ---------- Una palabra en serif cursiva por titular ---------- */
+  function acentuarTitulos(raiz) {
+    var h2s = (raiz || document).querySelectorAll(".titulo-seccion h2");
+    Array.prototype.forEach.call(h2s, function (h2) {
+      if (h2.querySelector(".acento-serif")) return;
+      var walker = document.createTreeWalker(h2, NodeFilter.SHOW_TEXT, null);
+      var ultimo = null;
+      var nodo;
+      while ((nodo = walker.nextNode())) {
+        if (nodo.nodeValue && nodo.nodeValue.trim()) ultimo = nodo;
+      }
+      if (!ultimo) return;
+      var texto = ultimo.nodeValue;
+      var trozo = texto.match(/(\S+)(\s*)$/);
+      if (!trozo) return;
+      var palabra = trozo[1];
+      var indice = texto.lastIndexOf(palabra);
+      var antes = texto.slice(0, indice);
+      var despues = texto.slice(indice + palabra.length);
+      var em = document.createElement("em");
+      em.className = "acento-serif";
+      em.textContent = palabra;
+      var fragmento = document.createDocumentFragment();
+      if (antes) fragmento.appendChild(document.createTextNode(antes));
+      fragmento.appendChild(em);
+      if (despues) fragmento.appendChild(document.createTextNode(despues));
+      if (ultimo.parentNode) ultimo.parentNode.replaceChild(fragmento, ultimo);
+    });
+  }
+
+  /* ---------- Reveal al hacer scroll ---------- */
+  var SELECTOR = ".sello, .tarjeta, .faq-item, .titulo-seccion, .admin-item";
+  var io = null;
+
+  function prepararReveals(raiz) {
+    if (!io || reduceMotion.matches) return;
+    var nodos = (raiz || document).querySelectorAll(SELECTOR);
+    Array.prototype.forEach.call(nodos, function (el) {
+      if (el.dataset.reveal) return;
+      el.dataset.reveal = "1";
+      el.classList.add("reveal");
+      var grupo = el.parentElement;
+      var indice = 0;
+      if (grupo) {
+        var hermanos = Array.prototype.filter.call(grupo.children, function (c) {
+          return c.matches && c.matches(SELECTOR);
+        });
+        indice = Math.max(0, hermanos.indexOf(el));
+      }
+      el.style.transitionDelay = (Math.min(indice, 8) * 60) + "ms";
+      io.observe(el);
+    });
+  }
+
+  if ("IntersectionObserver" in window) {
+    io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visible");
+          io.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15 });
+  }
+
+  acentuarTitulos(document);
+  prepararReveals(document);
+
+  if ("MutationObserver" in window) {
+    var mo = new MutationObserver(function (mutaciones) {
+      mutaciones.forEach(function (m) {
+        if (m.type !== "childList") return;
+        Array.prototype.forEach.call(m.addedNodes, function (nodo) {
+          if (nodo.nodeType !== 1) return;
+          acentuarTitulos(nodo);
+          prepararReveals(nodo);
+        });
+      });
+    });
+    var contenido = document.querySelector("main");
+    if (contenido) mo.observe(contenido, { childList: true, subtree: true });
+  }
+
+  reduceMotion.addEventListener("change", function () {
+    if (!reduceMotion.matches) return;
+    Array.prototype.forEach.call(document.querySelectorAll(".reveal"), function (el) {
+      el.classList.add("visible");
+      el.style.transitionDelay = "0ms";
+    });
+  });
+
+  entradaHero();
+})();
+</script>
+
+<script type="module">
+(async function () {
+  "use strict";
+
+  var contenedor = document.getElementById("escena-neon");
+  var canvas = document.getElementById("objeto-neon");
+  if (!contenedor || !canvas) return;
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var movil = window.matchMedia("(max-width: 820px)");
+
+  function ocultar() { contenedor.classList.add("sin-3d"); }
+
+  try {
+    var soportaWebGL2 = false;
+    try { soportaWebGL2 = !!document.createElement("canvas").getContext("webgl2"); } catch (e) { soportaWebGL2 = false; }
+    if (!soportaWebGL2) { ocultar(); return; }
+    if (window.WebGLRenderingContext === undefined) { ocultar(); return; }
+
+    var THREE = await import("three");
+    var RoomEnvironment = (await import("three/addons/environments/RoomEnvironment.js")).RoomEnvironment;
+
+    var renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance"
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.88;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+    camera.position.set(0, 0, 10);
+
+    var pmrem = new THREE.PMREMGenerator(renderer);
+    var room = new RoomEnvironment();
+    scene.environment = pmrem.fromScene(room, 0.04).texture;
+    if (room.dispose) room.dispose();
+    pmrem.dispose();
+
+    scene.add(new THREE.HemisphereLight(0x9dffc8, 0x04240f, 0.42));
+    var luzClave = new THREE.DirectionalLight(0xb6ffd6, 1.0);
+    luzClave.position.set(3, 5, 6);
+    scene.add(luzClave);
+    var contraluz = new THREE.DirectionalLight(0x39ff88, 1.7);
+    contraluz.position.set(-5, -1, -4);
+    scene.add(contraluz);
+
+    var grupo = new THREE.Group();
+    scene.add(grupo);
+
+    var wobbleUniform = { value: 0 };
+    var materialCristal = new THREE.MeshPhysicalMaterial({
+      color: 0x79f0ac,
+      emissive: 0x00ff7a,
+      emissiveIntensity: 0.3,
+      roughness: 0.24,
+      metalness: 0.08,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.18,
+      iridescence: 0.85,
+      iridescenceIOR: 1.4,
+      transparent: true,
+      opacity: 0.92,
+      envMapIntensity: 0.6,
+      flatShading: true
+    });
+    materialCristal.onBeforeCompile = function (shader) {
+      shader.uniforms.uWobbleTime = wobbleUniform;
+      shader.vertexShader = "uniform float uWobbleTime;\n" + shader.vertexShader;
+      shader.vertexShader = shader.vertexShader.replace(
+        "#include <begin_vertex>",
+        [
+          "#include <begin_vertex>",
+          "float w = sin(transformed.x * 3.0 + uWobbleTime * 1.6)",
+          "        * cos(transformed.y * 2.7 + uWobbleTime * 1.2)",
+          "        * sin(transformed.z * 3.3 + uWobbleTime * 0.9);",
+          "transformed += normal * w * 0.06;"
+        ].join("\n")
+      );
+    };
+    materialCristal.customProgramCacheKey = function () { return "moon-cristal-wobble"; };
+
+    var nucleo = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 2), materialCristal);
+    grupo.add(nucleo);
+
+    var anillo = new THREE.Mesh(
+      new THREE.TorusGeometry(1.52, 0.007, 8, 180),
+      new THREE.MeshBasicMaterial({ color: 0x39ff88, transparent: true, opacity: 0.5 })
+    );
+    anillo.rotation.set(Math.PI * 0.42, 0.22, 0.32);
+    grupo.add(anillo);
+
+    var esquirlas = [];
+    for (var i = 0; i < 6; i++) {
+      var esquirla = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), materialCristal);
+      var tam = 0.04 + Math.random() * 0.045;
+      esquirla.scale.setScalar(tam);
+      esquirla.userData = {
+        ang: (i / 6) * Math.PI * 2,
+        vel: 0.16 + Math.random() * 0.12,
+        radio: 1.6 + Math.random() * 0.4,
+        altura: (Math.random() - 0.5) * 0.8
+      };
+      esquirlas.push(esquirla);
+      grupo.add(esquirla);
+    }
+
+    var POSES = {
+      home:      { x: 0.38, y: 0.12, s: 0.62, yaw: 0.4, pitch: 0.1, roll: 0.05 },
+      productos: { x: 0.90, y: -0.62, s: 0.26, yaw: 0.8, pitch: 0.2, roll: -0.1 },
+      soporte:   { x: -0.90, y: -0.50, s: 0.28, yaw: -0.5, pitch: 0.15, roll: 0.1 },
+      admin:     { x: 0.95, y: -0.70, s: 0.18, yaw: 0.3, pitch: 0.1, roll: 0 }
+    };
+
+    function poseDe(nombre) {
+      var p = POSES[nombre] || POSES.home;
+      if (movil.matches) {
+        var movilPose = nombre === "home"
+          ? { x: 0.45, y: 0.36, s: 0.19 }
+          : { x: 0.55, y: -0.55, s: 0.16 };
+        return { x: movilPose.x, y: movilPose.y, s: movilPose.s, yaw: p.yaw, pitch: p.pitch, roll: p.roll };
+      }
+      return p;
+    }
+
+    var seccion = "home";
+    var actual = Object.assign({}, poseDe("home"));
+    var halfH = Math.tan(THREE.MathUtils.degToRad(15)) * 10;
+    var halfW = halfH;
+
+    function medir() {
+      var w = Math.max(1, window.innerWidth);
+      var h = Math.max(1, window.innerHeight);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      halfH = Math.tan(THREE.MathUtils.degToRad(15)) * 10;
+      halfW = halfH * camera.aspect;
+    }
+
+    var puntero = { x: 0.5, y: 0.5 };
+    var inclinacion = { x: 0, y: 0 };
+    var objetivoIncl = { x: 0, y: 0 };
+    var tiempo = 0;
+    var tiempoOnda = 0;
+    var ultimo = 0;
+    var raf = 0;
+    var ultimoScroll = window.scrollY;
+    var velocidadScroll = 0;
+
+    function colocar() {
+      var p = actual;
+      var parallax = Math.max(-0.5, Math.min(0.5, window.scrollY * 0.0004));
+      var flotar = reduceMotion.matches ? 0 : Math.sin(tiempo * 0.9) * 0.018 * halfH;
+      grupo.position.set(p.x * halfW, p.y * halfH + parallax + flotar, 0);
+      grupo.scale.setScalar(p.s * halfH);
+      grupo.rotation.set(
+        p.pitch + (reduceMotion.matches ? 0 : Math.sin(tiempo * 0.5) * 0.05),
+        p.yaw + (reduceMotion.matches ? 0 : tiempo * 0.12),
+        p.roll
+      );
+      esquirlas.forEach(function (s) {
+        var a = s.userData.ang + (reduceMotion.matches ? 0 : tiempo * s.userData.vel);
+        s.position.set(
+          Math.cos(a) * s.userData.radio,
+          s.userData.altura + Math.sin(a * 1.3) * 0.35,
+          Math.sin(a) * s.userData.radio
+        );
+        s.rotation.set(a * 0.7, a * 1.5, 0);
+      });
+      wobbleUniform.value = tiempoOnda;
+    }
+
+    function pintar() {
+      renderer.render(scene, camera);
+    }
+
+    function bucle(ts) {
+      raf = window.requestAnimationFrame(bucle);
+      if (!ultimo) ultimo = ts;
+      var dt = Math.min((ts - ultimo) / 1000, 0.05);
+      ultimo = ts;
+      tiempo += dt;
+
+      var objetivo = poseDe(seccion);
+      var k = 1 - Math.exp(-3.2 * dt);
+      actual.x += (objetivo.x - actual.x) * k;
+      actual.y += (objetivo.y - actual.y) * k;
+      actual.s += (objetivo.s - actual.s) * k;
+      actual.yaw += (objetivo.yaw - actual.yaw) * k;
+      actual.pitch += (objetivo.pitch - actual.pitch) * k;
+      actual.roll += (objetivo.roll - actual.roll) * k;
+
+      var desplazamiento = window.scrollY - ultimoScroll;
+      ultimoScroll = window.scrollY;
+      velocidadScroll += (desplazamiento - velocidadScroll) * 0.1;
+      var acelerar = Math.min(Math.abs(velocidadScroll) / 1800, 1.4);
+      tiempoOnda += dt * (1 + acelerar);
+
+      var kTilt = 1 - Math.exp(-dt / 0.1);
+      inclinacion.x += (objetivoIncl.x - inclinacion.x) * kTilt;
+      inclinacion.y += (objetivoIncl.y - inclinacion.y) * kTilt;
+      camera.rotation.x = -inclinacion.y;
+      camera.rotation.y = inclinacion.x;
+
+      colocar();
+      pintar();
+    }
+
+    function arrancar() {
+      if (raf) return;
+      ultimo = 0;
+      raf = window.requestAnimationFrame(bucle);
+    }
+    function parar() {
+      if (raf) window.cancelAnimationFrame(raf);
+      raf = 0;
+    }
+
+    function aplicarPose(sinSuavizar) {
+      var objetivo = poseDe(seccion);
+      if (sinSuavizar) Object.assign(actual, objetivo);
+      colocar();
+      pintar();
+    }
+
+    medir();
+    aplicarPose(true);
+
+    window.addEventListener("resize", function () {
+      medir();
+      colocar();
+      if (reduceMotion.matches) pintar();
+    }, { passive: true });
+
+    window.addEventListener("pointermove", function (e) {
+      puntero.x = e.clientX / Math.max(1, window.innerWidth);
+      puntero.y = e.clientY / Math.max(1, window.innerHeight);
+      objetivoIncl.x = (puntero.x - 0.5) * 0.01745;
+      objetivoIncl.y = (puntero.y - 0.5) * 0.01745;
+    }, { passive: true });
+
+    window.addEventListener("scroll", function () {
+      if (reduceMotion.matches) {
+        colocar();
+        pintar();
+      }
+    }, { passive: true });
+
+    var obs = new MutationObserver(function () {
+      var activa = document.querySelector(".seccion.activa");
+      if (!activa) return;
+      seccion = activa.id.replace("seccion-", "");
+      if (reduceMotion.matches) aplicarPose(true);
+    });
+    ["home", "productos", "soporte", "admin"].forEach(function (s) {
+      var el = document.getElementById("seccion-" + s);
+      if (el) obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) parar();
+      else if (!reduceMotion.matches) arrancar();
+    });
+
+    reduceMotion.addEventListener("change", function () {
+      if (reduceMotion.matches) {
+        parar();
+        inclinacion.x = inclinacion.y = 0;
+        objetivoIncl.x = objetivoIncl.y = 0;
+        camera.rotation.set(0, 0, 0);
+        aplicarPose(true);
+      } else {
+        arrancar();
+      }
+    });
+
+    movil.addEventListener("change", function () {
+      if (reduceMotion.matches) aplicarPose(true);
+    });
+
+    if (reduceMotion.matches) pintar();
+    else arrancar();
+  } catch (e) {
+    ocultar();
+  }
+})();
 </script>
 </body>
 </html>
